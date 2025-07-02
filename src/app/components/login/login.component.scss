@@ -97,7 +97,6 @@
   margin: auto;
   width: 100%;
   border-radius: 50px;
-  margin-top: 180px;
 }
 
 .login-form h1 {
@@ -208,12 +207,15 @@
 }
 
 .footer {
+  
   padding: 20px;
   text-align: center;
   border-top: 1px solid #e9ecef;
   margin-top: auto;
   width: 100%;
   box-shadow: none;
+  position: absolute;
+  bottom: 0;
 }
 
 .footer-text {
@@ -225,6 +227,7 @@
 .footer-link {
   color: var(--primary-blue);
   text-decoration: none;
+  
 }
 
 .footer-link:hover {
