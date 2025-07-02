@@ -1,11 +1,23 @@
 <div [ngClass]="['header', headerClass]">
   <div class="header-content">
+    <!-- Mobile hamburger button - left side -->
+    <button class="hamburger-btn mobile-only" (click)="toggleSidebar()" aria-label="Toggle sidebar">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    
     <div class="header-center">
       <div class="header-text">
         <h1 *ngIf="title">{{ title }}</h1>
         <h2 *ngIf="subtitle" class="subtitle">{{ subtitle }}</h2>
       </div>
     </div>
+    
+    <!-- Mobile logout button - right side -->
+    <button class="logout-btn mobile-logout mobile-only" (click)="logout()" aria-label="Logout">
+      <img src="/assets/logout.svg" alt="Log Out" class="icon-logout" />
+    </button>
     
     <!-- User section - desktop only -->
     <div class="user-section desktop-only">
@@ -20,21 +32,6 @@
         Log Out <img src="/assets/logout.svg" alt="Log Out" class="icon-logout" />
       </button>
     </div>
-  </div>
-  
-  <!-- Mobile controls row -->
-  <div class="mobile-controls">
-    <!-- Hamburger menu for mobile -->
-    <button class="hamburger-btn" (click)="toggleSidebar()" aria-label="Toggle sidebar">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-    
-    <!-- Mobile logout button - icon only -->
-    <button class="logout-btn mobile-logout" (click)="logout()" aria-label="Logout">
-      <img src="/assets/logout.svg" alt="Log Out" class="icon-logout" />
-    </button>
   </div>
   
   <!-- Metrics Cards Section - Only show on dashboard -->

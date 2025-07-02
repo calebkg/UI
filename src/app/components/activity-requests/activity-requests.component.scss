@@ -230,6 +230,73 @@
   background: #c82333;
 }
 
+/* Mobile Cards */
+.mobile-cards {
+  display: none;
+  padding: 20px;
+}
+
+.request-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+.card-header {
+  background: var(--accent-green);
+  color: var(--white);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-number {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.card-body {
+  padding: 15px 20px;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+
+.card-label {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 12px;
+  min-width: 80px;
+}
+
+.card-value {
+  color: var(--text-light);
+  font-size: 12px;
+  text-align: right;
+  flex: 1;
+  margin-left: 10px;
+  word-wrap: break-word;
+}
+
+.card-actions {
+  padding: 15px 20px;
+  border-top: 1px solid #e9ecef;
+  background: #f8f9fa;
+}
+
+.action-btn.mobile {
+  padding: 8px 16px;
+  font-size: 11px;
+}
+
 .pagination {
   padding: 20px 30px;
   display: flex;
@@ -346,12 +413,6 @@
     padding: 15px 20px;
   }
   
-  .activity-table th,
-  .activity-table td {
-    padding: 10px 8px;
-    font-size: 11px;
-  }
-  
   .section-title h2 {
     font-size: 16px;
   }
@@ -359,6 +420,18 @@
   .add-new-btn {
     font-size: 11px;
     padding: 10px 16px;
+  }
+  
+  .mobile-cards {
+    display: block;
+  }
+  
+  .hide-mobile {
+    display: none;
+  }
+  
+  .show-mobile {
+    display: block;
   }
 }
 
@@ -381,17 +454,6 @@
     justify-content: center;
   }
   
-  .activity-table th,
-  .activity-table td {
-    padding: 8px 6px;
-    font-size: 10px;
-  }
-  
-  .action-btn {
-    padding: 4px 8px;
-    font-size: 9px;
-  }
-  
   .section-title h2 {
     font-size: 14px;
   }
@@ -399,5 +461,34 @@
   .add-new-btn {
     font-size: 10px;
     padding: 8px 12px;
+  }
+  
+  .mobile-cards {
+    padding: 15px;
+  }
+  
+  .request-card {
+    margin-bottom: 12px;
+  }
+  
+  .card-header,
+  .card-body,
+  .card-actions {
+    padding: 12px 15px;
+  }
+}
+
+/* Desktop visibility controls */
+@media (min-width: 901px) {
+  .hide-desktop {
+    display: none !important;
+  }
+  
+  .show-desktop {
+    display: block !important;
+  }
+  
+  .mobile-cards {
+    display: none !important;
   }
 }

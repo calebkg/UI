@@ -35,7 +35,8 @@
           </div>
         </div>
         
-        <div class="table-container">
+        <!-- Desktop Table -->
+        <div class="table-container hide-mobile">
           <table class="activity-table">
             <thead>
               <tr>
@@ -108,6 +109,42 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        
+        <!-- Mobile Card View -->
+        <div class="mobile-cards show-mobile">
+          <div class="request-card" *ngFor="let request of paginatedRequests; let i = index">
+            <div class="card-header">
+              <span class="card-number">{{ request.no }}</span>
+              <span class="status-badge" [class]="'status-' + request.status.toLowerCase()">
+                {{ request.status }}
+              </span>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <span class="card-label">Amount:</span>
+                <span class="card-value">{{ request.currency }} {{ request.amount | number:'1.0-0' }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Period:</span>
+                <span class="card-value">{{ request.dateFrom }} - {{ request.dateTo }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Description:</span>
+                <span class="card-value">{{ request.description }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Comments:</span>
+                <span class="card-value">{{ request.approvalComments }}</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="action-btn edit-btn mobile" (click)="editRequest(request)">
+                <img src="assets/editlogo.svg" alt="Edit" width="16" height="16" />
+                EDIT
+              </button>
+            </div>
+          </div>
         </div>
         
         <div class="pagination" *ngIf="totalPages > 1">
