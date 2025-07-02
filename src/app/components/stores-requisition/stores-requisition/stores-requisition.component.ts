@@ -26,6 +26,7 @@ interface StoresRequisition {
   styleUrls: ['./stores-requisition.component.scss']
 })
 export class StoresRequisitionComponent {
+  sidebarOpen = false;
   storesRequisitions: StoresRequisition[] = [
     { id: 'SR-001', employeeName: 'Alice Brown', employeeNumber: 'EMP003', itemDescription: 'Paper', quantity: 10, unitOfIssue: 'Ream', purpose: 'Printing', notes: '', status: 'Pending' },
     { id: 'SR-002', employeeName: 'Bob White', employeeNumber: 'EMP004', itemDescription: 'Stapler', quantity: 2, unitOfIssue: 'Piece', purpose: 'Office use', notes: '', status: 'Approved' }
@@ -77,4 +78,4 @@ export class StoresRequisitionComponent {
       Object.values(req).some(val => val && val.toString().toLowerCase().includes(term))
     );
   }
-} 
+}

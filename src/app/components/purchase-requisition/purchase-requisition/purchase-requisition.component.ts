@@ -21,11 +21,12 @@ interface PurchaseRequisition {
 @Component({
   selector: 'app-purchase-requisition',
   standalone: true,
-  imports: [CommonModule, FormsModule, SidebarComponent, HeaderComponent],
+  imports: [CommonModule, FormsModule, SidebarComponent, HeaderComponent, FooterComponent],
   templateUrl: './purchase-requisition.component.html',
   styleUrls: ['./purchase-requisition.component.scss']
 })
 export class PurchaseRequisitionComponent {
+  sidebarOpen = false;
   purchaseRequisitions: PurchaseRequisition[] = [
     { id: 'PR-001', employeeName: 'John Doe', employeeNumber: 'EMP001', itemDescription: 'Printer', quantity: 2, unitPrice: 15000, totalPrice: 30000, purpose: 'Office use', status: 'Pending' },
     { id: 'PR-002', employeeName: 'Jane Smith', employeeNumber: 'EMP002', itemDescription: 'Laptop', quantity: 1, unitPrice: 80000, totalPrice: 80000, purpose: 'New staff', status: 'Approved' }
@@ -77,4 +78,4 @@ export class PurchaseRequisitionComponent {
       Object.values(req).some(val => val && val.toString().toLowerCase().includes(term))
     );
   }
-} 
+}

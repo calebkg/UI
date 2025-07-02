@@ -1,11 +1,12 @@
 <div class="purchase-requisition-container">
-  <app-sidebar [sidebarType]="'finance'"></app-sidebar>
+  <app-sidebar [sidebarType]="'finance'" [(open)]="sidebarOpen"></app-sidebar>
   <div class="main-content">
     <app-header 
       title="Financial Services" 
       subtitle="Finance Services/Purchase Requisition"
       headerClass="finance"
-      [showBackButton]="false">
+      [showBackButton]="false"
+      [(sidebarOpen)]="sidebarOpen">
     </app-header>
     <div class="purchase-requisition-content">
       <div class="purchase-requisition-section">
@@ -29,7 +30,9 @@
             </div>
           </div>
         </div>
-        <div class="table-container">
+        
+        <!-- Desktop Table -->
+        <div class="table-container hide-mobile">
           <table class="purchase-requisition-table">
             <thead>
               <tr>
@@ -62,86 +65,48 @@
             </tbody>
           </table>
         </div>
-      </div>
-      <div *ngIf="showNewForm || editingReq" class="modal-form">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3>{{ editingReq ? 'Edit Purchase Requisition' : 'New Purchase Requisition' }}</h3>
-            <button class="close-btn" (click)="closeForm()">&times;</button>
+        
+        <!-- Mobile Card View -->
+        <div class="mobile-cards show-mobile">
+          <div class="requisition-card" *ngFor="let req of filteredRequisitions; let i = index">
+            <div class="card-header">
+              <span class="card-number">{{ req.id }}</span>
+              <span class="status-badge status-{{ req.status.toLowerCase() }}">
+                {{ req.status }}
+              </span>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <span class="card-label">Employee:</span>
+                <span class="card-value">{{ req.employeeName }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Item:</span>
+                <span class="card-value">{{ req.itemDescription }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Quantity:</span>
+                <span class="card-value">{{ req.quantity }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Unit Price:</span>
+                <span class="card-value">{{ req.unitPrice | number:'1.0-0' }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Total:</span>
+                <span class="card-value">{{ req.totalPrice | number:'1.0-0' }}</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="action-btn edit-btn mobile" (click)="editRequisition(req)">
+                <img src="assets/editlogo.svg" alt="Edit" width="16" height="16" />
+                EDIT
+              </button>
+            </div>
           </div>
-          <form (ngSubmit)="submitForm()">
-            <!-- Personal Details -->
-            <div class="form-section">
-              <h4>Personal Details</h4>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Employee's Name</label>
-                  <input type="text" [(ngModel)]="formReq.employeeName" name="employeeName" required>
-                </div>
-                <div class="form-group">
-                  <label>Employee's No.</label>
-                  <input type="text" [(ngModel)]="formReq.employeeNumber" name="employeeNumber" required>
-                </div>
-              </div>
-            </div>
-            <!-- Requisition Details -->
-            <div class="form-section">
-              <h4>Requisition Details</h4>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Item Description</label>
-                  <input type="text" [(ngModel)]="formReq.itemDescription" name="itemDescription" required>
-                </div>
-                <div class="form-group">
-                  <label>Quantity</label>
-                  <input type="number" [(ngModel)]="formReq.quantity" name="quantity" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Unit Price</label>
-                  <input type="number" [(ngModel)]="formReq.unitPrice" name="unitPrice" required>
-                </div>
-                <div class="form-group">
-                  <label>Total Price</label>
-                  <input type="number" [(ngModel)]="formReq.totalPrice" name="totalPrice" required>
-                </div>
-              </div>
-            </div>
-            <!-- Purpose -->
-            <div class="form-section">
-              <div class="form-group">
-                <label>Purpose/Justification</label>
-                <textarea [(ngModel)]="formReq.purpose" name="purpose" rows="3" required></textarea>
-              </div>
-            </div>
-            <!-- File Upload -->
-            <div class="form-section">
-              <h4>Upload Supporting files</h4>
-              <div class="file-upload-area" (click)="triggerFileUpload()">
-                <div class="upload-icon">☁️</div>
-                <h4>Choose a file or drag & drop it here</h4>
-                <p>JPEG, PNG, PDF, and MP4 formats, up to 50MB</p>
-                <button class="browse-btn" type="button">Browse File</button>
-              </div>
-              <div class="form-group">
-                <label>Document Description</label>
-                <textarea placeholder="Document Description" rows="3"></textarea>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button class="btn btn-primary" type="submit">{{ editingReq ? 'Update' : 'Submit' }}</button>
-              <button class="btn btn-success" type="button" (click)="closeForm()">Cancel</button>
-            </div>
-          </form>
         </div>
       </div>
     </div>
-    <div class="footer">
-      <span class="footer-text">
-        <strong>InsupplyHealth</strong> © 2025. | Powered by 
-        <a href="https://sysre.co.ke/" target="_blank" class="footer-link">Systems Reengineered Ltd.</a>
-      </span>
-    </div>
+    <app-footer></app-footer>
   </div>
-</div> 
+</div>
