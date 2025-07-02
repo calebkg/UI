@@ -175,17 +175,31 @@
   }
   
   .action-btn {
-    padding: 6px 12px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 4px;
-    font-size: 10px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     text-transform: uppercase;
+    background: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(33, 64, 152, 0.2);
+  }
+  
+  .action-btn:hover {
+    background: var(--secondary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(33, 64, 152, 0.3);
+  }
+  
+  .action-btn img {
+    width: 18px;
+    height: 18px;
   }
   
   .edit-btn {
@@ -200,24 +214,19 @@
   .view-btn {
     background: var(--primary-blue);
     color: var(--white);
-    margin-left: 12px;
-    margin-right: 12px;
-    
   }
   
   .view-btn:hover {
-    background: var(--primary-blue);
+    background: var(--secondary-blue);
   }
   
   .approvers-btn {
-    background: var(--accent-green);
+    background: var(--primary-blue);
     color: var(--white);
-    margin-right: -70px;
-    background-color: var(--primary-blue);
   }
   
   .approvers-btn:hover {
-    background: var(--primary-blue);
+    background: var(--secondary-blue);
   }
 
   /* Mobile Cards */
