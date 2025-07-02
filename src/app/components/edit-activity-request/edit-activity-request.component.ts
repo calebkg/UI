@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { FooterComponent } from '../shared/footer/footer.component';
+import { DataService } from '../../services/data.service';
 
 interface ImprestLine {
   no: string;
@@ -29,9 +30,10 @@ interface SupportingFile {
   templateUrl: './edit-activity-request.component.html',
   styleUrls: ['./edit-activity-request.component.scss']
 })
-export class EditActivityRequestComponent {
+export class EditActivityRequestComponent implements OnInit {
   showAddLineModal = false;
   requestId: string = '';
+  sidebarOpen = false;
   
   imprestLines: ImprestLine[] = [
     {
@@ -88,8 +90,16 @@ export class EditActivityRequestComponent {
     description: ''
   };
   
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) {}
+  
+  ngOnInit() {
     this.requestId = this.route.snapshot.params['id'];
+    // In a real app, we would fetch the request data from the service
+    // For now, we'll use the mock data already in the component
   }
   
   openAddLineModal() {
@@ -166,6 +176,9 @@ export class EditActivityRequestComponent {
     console.log('Submitting edited request:', this.editRequest);
     console.log('Imprest lines:', this.imprestLines);
     console.log('Supporting files:', this.supportingFiles);
+    
+    // In a real app, we would update the request in the service
+    // For now, we'll just navigate back to the activity requests page
     this.router.navigate(['/activity-requests']);
   }
   

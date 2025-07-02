@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,11 +22,12 @@ interface Approver {
   templateUrl: './fund-claim-approvers.component.html',
   styleUrls: ['./fund-claim-approvers.component.scss']
 })
-export class FundClaimApproversComponent {
+export class FundClaimApproversComponent implements OnInit {
   searchTerm = '';
   claimId: string = '';
   currentPage = 1;
   itemsPerPage = 10;
+  sidebarOpen = false;
   
   approvers: Approver[] = [
     {
@@ -71,8 +72,12 @@ export class FundClaimApproversComponent {
     }
   ];
   
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute) {}
+  
+  ngOnInit() {
     this.claimId = this.route.snapshot.params['id'];
+    // In a real app, we would fetch the approvers for this claim
+    // For now, we'll use the mock data already in the component
   }
   
   get filteredApprovers() {

@@ -16,6 +16,7 @@ import { FooterComponent } from '../shared/footer/footer.component';
 })
 export class NewActivityRequestComponent {
   currentUser: any;
+  sidebarOpen = false;
   
   newRequest = {
     employeeName: '',
@@ -56,6 +57,7 @@ export class NewActivityRequestComponent {
       
       // Create the activity request
       const activityRequest = {
+        id: Date.now().toString(),
         no: requestNo,
         documentDate: new Date().toLocaleDateString('en-GB'),
         currency: this.newRequest.currency,
@@ -65,7 +67,8 @@ export class NewActivityRequestComponent {
         description: this.newRequest.description,
         approvalComments: 'Pending approval',
         status: 'Open',
-        editable: false
+        editable: false,
+        employeeId: this.currentUser.id
       };
       
       // Add to service

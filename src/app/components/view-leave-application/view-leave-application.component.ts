@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
@@ -12,8 +12,9 @@ import { FooterComponent } from '../shared/footer/footer.component';
   templateUrl: './view-leave-application.component.html',
   styleUrls: ['./view-leave-application.component.scss']
 })
-export class ViewLeaveApplicationComponent {
+export class ViewLeaveApplicationComponent implements OnInit {
   applicationId: string = '';
+  sidebarOpen = false;
   
   application = {
     employeeName: 'Nina Marley',
@@ -26,8 +27,12 @@ export class ViewLeaveApplicationComponent {
     reason: 'Compulsory Annual Leave'
   };
   
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute) {}
+  
+  ngOnInit() {
     this.applicationId = this.route.snapshot.params['id'];
+    // In a real app, we would fetch the application data from the service
+    // For now, we'll use the mock data already in the component
   }
   
   cancel() {

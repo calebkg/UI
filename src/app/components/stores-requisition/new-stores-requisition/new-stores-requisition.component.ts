@@ -14,6 +14,7 @@ import { FooterComponent } from '../../shared/footer/footer.component';
   styleUrls: ['./new-stores-requisition.component.scss']
 })
 export class NewStoresRequisitionComponent {
+  sidebarOpen = false;
   newRequest = {
     employeeName: '',
     employeeNumber: '',
@@ -23,8 +24,21 @@ export class NewStoresRequisitionComponent {
     purpose: '',
     notes: ''
   };
+  
   constructor(private router: Router) {}
-  triggerFileUpload() {}
-  submitNewRequest() {}
-  cancel() { this.router.navigate(['/stores-requisition']); }
-} 
+  
+  triggerFileUpload() {
+    console.log('File upload triggered');
+  }
+  
+  submitNewRequest() {
+    console.log('Submitting new stores requisition:', this.newRequest);
+    // In a real app, we would save the request to the service
+    // For now, we'll just navigate back to the stores requisition page
+    this.router.navigate(['/stores-requisition']);
+  }
+  
+  cancel() { 
+    this.router.navigate(['/stores-requisition']); 
+  }
+}

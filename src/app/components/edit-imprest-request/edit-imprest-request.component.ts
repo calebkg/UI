@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,8 +19,9 @@ interface SupportingFile {
   templateUrl: './edit-imprest-request.component.html',
   styleUrls: ['./edit-imprest-request.component.scss']
 })
-export class EditImprestRequestComponent {
+export class EditImprestRequestComponent implements OnInit {
   requestId: string = '';
+  sidebarOpen = false;
   
   supportingFiles: SupportingFile[] = [
     {
@@ -53,8 +54,12 @@ export class EditImprestRequestComponent {
     description: 'Lorem ipsum dolor sit amet consectetur.'
   };
   
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute) {}
+  
+  ngOnInit() {
     this.requestId = this.route.snapshot.params['id'];
+    // In a real app, we would fetch the request data from the service
+    // For now, we'll use the mock data already in the component
   }
   
   removeFile(file: SupportingFile) {

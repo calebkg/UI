@@ -51,6 +51,7 @@ export class ActivityRequestsComponent implements OnInit, OnDestroy {
     }
     return this.activityRequests.filter(request =>
       Object.values(request).some(value =>
+        value !== null && value !== undefined && 
         value.toString().toLowerCase().includes(this.searchTerm.toLowerCase())
       )
     );

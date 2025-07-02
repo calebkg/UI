@@ -14,6 +14,7 @@ import { FooterComponent } from '../shared/footer/footer.component';
   styleUrls: ['./new-imprest-request.component.scss']
 })
 export class NewImprestRequestComponent {
+  sidebarOpen = false;
   newRequest = {
     employeeName: '',
     employeeNumber: '',
@@ -40,6 +41,8 @@ export class NewImprestRequestComponent {
   
   submitNewRequest() {
     console.log('Submitting new imprest request:', this.newRequest);
+    // In a real app, we would save the request to the service
+    // For now, we'll just navigate back to the travel authorization page
     this.router.navigate(['/travel-authorization']);
   }
   

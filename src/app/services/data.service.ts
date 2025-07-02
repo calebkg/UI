@@ -141,10 +141,10 @@ export class DataService {
     return this.activityRequestsSubject.value;
   }
 
-  addActivityRequest(request: Omit<ActivityRequest, 'id' | 'employeeId'>): void {
+  addActivityRequest(request: any): void {
     const newRequest: ActivityRequest = {
       ...request,
-      id: Date.now().toString(),
+      id: request.id || Date.now().toString(),
       employeeId: this.getCurrentUser().id
     };
     const requests = [...this.activityRequestsSubject.value, newRequest];

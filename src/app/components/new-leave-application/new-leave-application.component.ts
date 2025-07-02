@@ -14,6 +14,7 @@ import { FooterComponent } from '../shared/footer/footer.component';
   styleUrls: ['./new-leave-application.component.scss']
 })
 export class NewLeaveApplicationComponent {
+  sidebarOpen = false;
   newApplication = {
     employeeName: '',
     employeeNumber: '',
@@ -32,6 +33,8 @@ export class NewLeaveApplicationComponent {
   
   submitApplication() {
     console.log('Submitting leave application:', this.newApplication);
+    // In a real app, we would save the application to the service
+    // For now, we'll just navigate back to the HR services page
     this.router.navigate(['/hr-services']);
   }
   

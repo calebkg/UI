@@ -9,11 +9,12 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 @Component({
   selector: 'app-new-purchase-requisition',
   standalone: true,
-  imports: [CommonModule, FormsModule, SidebarComponent, HeaderComponent],
+  imports: [CommonModule, FormsModule, SidebarComponent, HeaderComponent, FooterComponent],
   templateUrl: './new-purchase-requisition.component.html',
   styleUrls: ['./new-purchase-requisition.component.scss']
 })
 export class NewPurchaseRequisitionComponent {
+  sidebarOpen = false;
   newRequest = {
     employeeName: '',
     employeeNumber: '',
@@ -23,8 +24,24 @@ export class NewPurchaseRequisitionComponent {
     totalPrice: 0,
     purpose: ''
   };
+  
   constructor(private router: Router) {}
-  triggerFileUpload() {}
-  submitNewRequest() {}
-  cancel() { this.router.navigate(['/purchase-requisition']); }
-} 
+  
+  triggerFileUpload() {
+    console.log('File upload triggered');
+  }
+  
+  submitNewRequest() {
+    console.log('Submitting new purchase requisition:', this.newRequest);
+    // Calculate total price
+    this.newRequest.totalPrice = this.newRequest.quantity * this.newRequest.unitPrice;
+    
+    // In a real app, we would save the request to the service
+    // For now, we'll just navigate back to the purchase requisition page
+    this.router.navigate(['/purchase-requisition']);
+  }
+  
+  cancel() { 
+    this.router.navigate(['/purchase-requisition']); 
+  }
+}
