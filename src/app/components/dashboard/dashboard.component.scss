@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: margin-left 0.3s ease;
 }
 
 .dashboard-content {
@@ -37,18 +38,18 @@
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 20px;
 }
 
 .service-card {
   background: var(--primary-blue);
   color: var(--white);
-  padding: 16px;
+  padding: 20px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 90px;
+  min-height: 120px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -266,7 +267,7 @@
   text-align: center;
   border-top: 1px solid #e9ecef;
   margin-top: auto;
-  margin-left: -370px;
+  margin-left: -280px;
   width: calc(100% + 280px);
   box-shadow: none;
 }
@@ -290,27 +291,24 @@
   }
 }
 
+/* Responsive Design */
 @media (max-width: 1200px) {
   .content-row {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-@media (max-width: 768px) {
+  
   .main-content {
-    margin-left: 0;
+    margin-left: 260px;
   }
   
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .dashboard-content {
-    padding: 20px;
+  .footer {
+    margin-left: -260px;
+    padding-left: 260px;
   }
 }
 
@@ -318,27 +316,88 @@
   .main-content {
     margin-left: 0 !important;
   }
+  
   .footer {
     margin-left: 0 !important;
     width: 100% !important;
     padding-left: 0 !important;
   }
+  
   .footer-text {
     padding-left: 0 !important;
   }
+  
   .dashboard-container {
     flex-direction: column;
   }
+  
+  .dashboard-content {
+    padding: 20px 15px;
+  }
+  
   .content-row {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .service-card {
+    min-height: 100px;
+    padding: 15px;
+  }
+  
+  .service-card h3 {
+    font-size: 14px;
+  }
+  
+  .service-icon img {
+    width: 40px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 600px) {
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
   }
+  
   .dashboard-content {
+    padding: 15px 10px;
+  }
+  
+  .service-card {
+    min-height: 90px;
     padding: 12px;
+  }
+  
+  .service-card h3 {
+    font-size: 13px;
+  }
+  
+  .view-more-text {
+    font-size: 9px;
+  }
+  
+  .arrow-circle {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .balance-table td,
+  .finance-table td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  .balance-table th,
+  .finance-table th {
+    padding: 8px 10px;
+    font-size: 11px;
   }
 }

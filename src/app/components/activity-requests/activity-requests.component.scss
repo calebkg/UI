@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: margin-left 0.3s ease;
 }
 
 .activity-content {
@@ -124,6 +125,7 @@
   width: 100%;
   border-collapse: collapse;
   background: var(--white);
+  min-width: 800px;
 }
 
 .activity-table th {
@@ -274,7 +276,7 @@
   text-align: center;
   border-top: 1px solid #e9ecef;
   margin-top: auto;
-  margin-left: -370px;
+  margin-left: -280px;
   width: calc(100% + 280px);
   box-shadow: none;
 }
@@ -295,13 +297,35 @@
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+/* Responsive Design */
+@media (max-width: 1200px) {
   .main-content {
-    margin-left: 0;
+    margin-left: 260px;
+  }
+  
+  .footer {
+    margin-left: -260px;
+    padding-left: 260px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0 !important;
+  }
+  
+  .footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+  
+  .footer-text {
+    padding-left: 0 !important;
   }
   
   .activity-content {
-    padding: 20px;
+    padding: 20px 15px;
     margin-top: -40px;
   }
   
@@ -309,10 +333,71 @@
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
+    padding: 15px 20px;
   }
   
   .search-container {
     flex-direction: column;
     align-items: stretch;
+    gap: 15px;
   }
-} 
+  
+  .search-section {
+    padding: 15px 20px;
+  }
+  
+  .activity-table th,
+  .activity-table td {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+  
+  .section-title h2 {
+    font-size: 16px;
+  }
+  
+  .add-new-btn {
+    font-size: 11px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .activity-content {
+    padding: 15px 10px;
+  }
+  
+  .section-header {
+    padding: 12px 15px;
+  }
+  
+  .search-section {
+    padding: 12px 15px;
+  }
+  
+  .pagination {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .activity-table th,
+  .activity-table td {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+  
+  .action-btn {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+  
+  .section-title h2 {
+    font-size: 14px;
+  }
+  
+  .add-new-btn {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+}

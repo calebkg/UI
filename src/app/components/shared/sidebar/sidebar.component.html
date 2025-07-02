@@ -1,6 +1,5 @@
 <div class="sidebar-overlay" *ngIf="open" (click)="closeSidebar()"></div>
-<div class="sidebar" [ngClass]="{ 'sidebar-open': open }" [style.background]="open ? '#ffcccc' : ''">
-  <div style="padding:8px;color:red;font-weight:bold;">DEBUG: open={{ open }}</div>
+<div class="sidebar" [ngClass]="{ 'sidebar-open': open }">
   <div class="logo-container">
     <div class="logo">
       <img class="logo-icon" src="assets/naturalstatelogo.svg" alt="Natural State Logo" />
@@ -9,7 +8,7 @@
   </div>
   
   <!-- Dashboard Sidebar -->
-  <div *ngIf="sidebarType === 'dashboard'">
+  <div *ngIf="sidebarType === 'dashboard'" class="sidebar-content">
     <nav class="nav-menu">
       <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
         <i class="icon-dashboard">
@@ -62,7 +61,7 @@
   </div>
   
   <!-- Financial Services Sidebar -->
-  <div *ngIf="sidebarType === 'finance'">
+  <div *ngIf="sidebarType === 'finance'" class="sidebar-content">
     <nav class="nav-menu">
       <a routerLink="/dashboard" class="nav-item">
         <i class="icon-dashboard">
@@ -126,7 +125,7 @@
   </div>
   
   <!-- HR Services Sidebar -->
-  <div *ngIf="sidebarType === 'hr'">
+  <div *ngIf="sidebarType === 'hr'" class="sidebar-content">
     <nav class="nav-menu">
       <a routerLink="/dashboard" class="nav-item">
         <i class="icon-dashboard">

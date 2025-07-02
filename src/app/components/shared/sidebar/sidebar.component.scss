@@ -7,10 +7,18 @@
   position: fixed;
   left: 0;
   top: 0;
-  height: 80vh;
-  overflow-y: auto;
+  height: 100vh;
   border-radius: 0 15px 15px 0;
   box-shadow: 0 10px 30px rgba(33, 64, 152, 0.3);
+  z-index: 1100;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 20px;
 }
 
 .logo-container {
@@ -26,7 +34,7 @@
   align-items: center;
   gap: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  height: 100px;
+  min-height: 70px;
 }
 
 .logo-icon {
@@ -38,18 +46,6 @@
   box-shadow: none;
   display: block;
   position: static;
-}
-
-.logo-icon::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: var(--white);
-  border-radius: 50%;
 }
 
 .logo-text {
@@ -71,10 +67,10 @@
   align-items: center;
   gap: 12px;
   padding: 15px 20px;
-  color:#E5F0FF ;
+  color: #E5F0FF;
   text-decoration: none;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   transition: all 0.3s ease;
   border: 2px solid transparent;
   position: relative;
@@ -82,10 +78,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
-  min-height: 70px;
+  min-height: 60px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 /* Special styling for Travel Authorization/Imprest Request */
@@ -237,20 +233,26 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Overlay for mobile */
+.sidebar-overlay {
+  display: none;
+}
+
+/* Desktop responsive adjustments */
 @media (max-width: 1400px) {
   .sidebar {
-    width: 280px;
-    height: 85vh;
+    width: 260px;
   }
   
   .nav-item {
     padding: 12px 16px;
-    font-size: 13px;
+    font-size: 14px;
+    min-height: 55px;
   }
   
   .travel-imprest-item {
     padding: 10px 16px;
-    min-height: 55px;
+    min-height: 50px;
   }
   
   .line-1, .line-2 {
@@ -264,8 +266,7 @@
 
 @media (max-width: 1280px) {
   .sidebar {
-    width: 280px;
-    height: 90vh;
+    width: 250px;
   }
   
   .logo-text {
@@ -274,12 +275,13 @@
   
   .nav-item {
     padding: 10px 14px;
-    font-size: 12px;
+    font-size: 13px;
+    min-height: 50px;
   }
   
   .travel-imprest-item {
     padding: 8px 14px;
-    min-height: 50px;
+    min-height: 45px;
   }
   
   .line-1, .line-2 {
@@ -287,6 +289,7 @@
   }
 }
 
+/* Mobile responsive */
 @media (max-width: 900px) {
   .sidebar {
     position: fixed;
@@ -294,20 +297,15 @@
     top: 0;
     height: 100vh;
     z-index: 1200;
-    transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 280px;
     border-radius: 0 15px 15px 0;
   }
+  
   .sidebar.sidebar-open {
     left: 0;
   }
-}
-
-// Overlay for mobile
-.sidebar-overlay {
-  display: none;
-}
-@media (max-width: 900px) {
+  
   .sidebar-overlay {
     display: block;
     position: fixed;
@@ -315,7 +313,83 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1100;
+    backdrop-filter: blur(2px);
   }
+  
+  .nav-item {
+    font-size: 14px;
+    padding: 12px 16px;
+    min-height: 50px;
+  }
+  
+  .travel-imprest-item {
+    padding: 10px 16px;
+    min-height: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 260px;
+    left: -260px;
+  }
+  
+  .sidebar.sidebar-open {
+    left: 0;
+  }
+  
+  .nav-item {
+    font-size: 13px;
+    padding: 10px 14px;
+    min-height: 45px;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    padding: 12px 16px;
+    min-height: 60px;
+  }
+  
+  .logo-text {
+    font-size: 11px;
+  }
+  
+  .help-card {
+    padding: 12px;
+  }
+  
+  .help-card h4 {
+    font-size: 14px;
+  }
+  
+  .help-card p {
+    font-size: 12px;
+  }
+}
+
+/* Custom scrollbar for sidebar content */
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar */
+.sidebar-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
 }
