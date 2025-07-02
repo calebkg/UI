@@ -18,7 +18,7 @@
   flex: 1;
   padding: 30px;
   position: relative;
-  margin-top: -40px; /* Reduced overlap with header */
+  margin-top: -60px; /* Updated to match stores requisition */
   z-index: 10;
 }
 
@@ -322,7 +322,7 @@ input[type="date"], select {
   
   .new-leave-content {
     padding: 20px 15px;
-    margin-top: -30px; /* Reduced overlap on mobile */
+    margin-top: -40px; /* Reduced overlap on mobile */
   }
   
   .section-body {

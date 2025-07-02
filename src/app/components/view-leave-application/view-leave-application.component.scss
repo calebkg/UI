@@ -11,13 +11,14 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: margin-left 0.3s ease;
 }
 
 .view-leave-content {
   flex: 1;
   padding: 30px;
   position: relative;
-  margin-top: -80px;
+  margin-top: -60px; /* Updated to match stores requisition */
   z-index: 10;
 }
 
@@ -85,4 +86,269 @@
   font-weight: 600;
   color: var(--primary-blue);
   margin-bottom: 5px;
-} 
+}
+
+.readonly-field {
+  padding: 10px 12px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f8f9fa;
+  color: var(--text-dark);
+}
+
+/* Balances Section */
+.balances-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.balances-section h3 {
+  color: var(--accent-green);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.balances-table {
+  overflow-x: auto;
+}
+
+.balances-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+}
+
+.balances-table th {
+  background: var(--accent-green);
+  color: var(--white);
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.balances-table td {
+  padding: 12px 15px;
+  font-size: 12px;
+  color: var(--text-dark);
+  border-bottom: 1px solid #e9ecef;
+}
+
+.row-white {
+  background: var(--white);
+}
+
+.row-blue {
+  background: #BCC8ED;
+}
+
+/* Ledger Section */
+.ledger-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.ledger-section h3 {
+  color: var(--accent-green);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.ledger-table {
+  overflow-x: auto;
+}
+
+.ledger-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+}
+
+.ledger-table th {
+  background: var(--accent-green);
+  color: var(--white);
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ledger-table td {
+  padding: 12px 15px;
+  font-size: 12px;
+  color: var(--text-dark);
+  border-bottom: 1px solid #e9ecef;
+}
+
+.section-footer {
+  padding: 20px 30px;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  border-radius: 0 0 12px 12px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn-success {
+  background: var(--accent-green);
+  color: var(--white);
+}
+
+.btn-success:hover {
+  background: var(--light-green);
+  transform: translateY(-2px);
+}
+
+.footer {
+  background: #E5F0FF;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e9ecef;
+  margin-top: auto;
+  margin-left: -280px;
+  width: calc(100% + 280px);
+  box-shadow: none;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: var(--text-dark);
+  display: inline-block;
+  padding-left: 280px;
+}
+
+.footer-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content {
+    margin-left: 260px;
+  }
+  
+  .footer {
+    margin-left: -260px;
+    padding-left: 260px;
+  }
+  
+  .form-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0 !important;
+  }
+  
+  .footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+  
+  .footer-text {
+    padding-left: 0 !important;
+  }
+  
+  .view-leave-content {
+    padding: 20px 15px;
+    margin-top: -40px;
+  }
+  
+  .section-body {
+    padding: 20px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header {
+    padding: 15px 20px;
+  }
+  
+  .section-header h2 {
+    font-size: 16px;
+  }
+  
+  .balances-section,
+  .ledger-section {
+    padding: 15px;
+  }
+  
+  .balances-table,
+  .ledger-table {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .view-leave-content {
+    padding: 15px 10px;
+    margin-top: -25px;
+  }
+  
+  .section-body {
+    padding: 15px;
+  }
+  
+  .section-footer {
+    padding: 15px;
+  }
+  
+  .section-header {
+    padding: 12px 15px;
+  }
+  
+  .section-header h2 {
+    font-size: 14px;
+  }
+  
+  .balances-section h3,
+  .ledger-section h3,
+  .form-section h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .balances-table th,
+  .balances-table td,
+  .ledger-table th,
+  .ledger-table td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
