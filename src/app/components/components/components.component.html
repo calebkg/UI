@@ -1,0 +1,61 @@
+<app-header
+  [title]="'Finance Services/Activity Requests'"
+  [subtitle]="'Financial Services'"
+  [(sidebarOpen)]="sidebarOpen"
+></app-header>
+<app-sidebar
+  [sidebarType]="'finance'"
+  [(open)]="sidebarOpen"
+></app-sidebar>
+<div class="components-container">
+    <div class="top-header">
+      <button class="back-btn">← Log Out</button>
+      <div class="user-section">
+        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2" alt="User" class="user-avatar">
+        <div class="user-info">
+          <div class="user-name">Esther Waithii</div>
+          <div class="user-email">technical&#64;ware.co.ke</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <div class="content-header">
+        <h1>Finance Services/Activity Requests</h1>
+        <h2>Financial Services</h2>
+      </div>
+      
+      <div class="logo-section">
+        <div class="logo">
+          <div class="logo-icon"></div>
+          <span class="logo-text">NATURAL STATE</span>
+        </div>
+      </div>
+      
+      <div class="actions-section">
+        <button class="btn btn-primary add-activity-btn">
+          <i class="icon-plus">+</i>
+          ADD NEW ACTIVITY REQUEST
+        </button>
+      </div>
+      
+      <div class="pagination-section">
+        <div class="pagination">
+          <button class="page-btn">Prev</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <span class="page-dots">...</span>
+          <button class="page-btn">10</button>
+          <button class="page-btn">Next</button>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-success">Cancel</button>
+      </div>
+    </div>
+    
+    <app-footer></app-footer>
+  </div>

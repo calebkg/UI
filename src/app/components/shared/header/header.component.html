@@ -1,0 +1,74 @@
+<div [ngClass]="['header', headerClass]">
+  <div class="header-content">
+    <!-- Hamburger menu for mobile (debug: always visible) -->
+    <button class="hamburger-btn" (click)="toggleSidebar()" aria-label="Open sidebar" style="background: #ff0; border: 2px solid #f00; z-index: 2000;"></button>
+    <div class="header-center">
+      <div class="header-text">
+        <h1 *ngIf="title">{{ title }}</h1>
+        <h2 *ngIf="subtitle" class="subtitle">{{ subtitle }}</h2>
+      </div>
+    </div>
+    <div class="user-section">
+      <div class="user-info">
+        <img [src]="currentUser?.avatar" [alt]="currentUser?.name" class="user-avatar">
+        <div class="user-details">
+          <div class="user-name">{{ currentUser?.name }}</div>
+          <div class="user-email">{{ currentUser?.email }}</div>
+        </div>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        Log Out <img src="/assets/logout.svg" alt="Log Out" class="icon-logout" />
+      </button>
+    </div>
+  </div>
+  
+  <!-- Metrics Cards Section - Only show on dashboard -->
+  <div class="metrics-section" *ngIf="headerClass === 'dashboard'">
+    <div class="metrics-container">
+      <div class="metric-card">
+        <div class="metric-icon">
+          <img src="/assets/SP My approved Leaves.svg" alt="My Approved Leaves">
+        </div>
+        <div class="metric-label">MY APPROVED LEAVES</div>
+        <hr class="metric-divider" />
+        <div class="metric-value">{{ dashboardMetrics?.approvedLeaves || 0 }}</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <img src="/assets/SP My PendingLeaves.svg" alt="My Pending Leaves" width="24" height="24">
+        </div>
+        <div class="metric-label">MY PENDING LEAVES</div>
+        <hr class="metric-divider" />
+        <div class="metric-value">{{ dashboardMetrics?.pendingLeaves || 0 }}</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <img src="/assets/SP My Approved Trainings.svg" alt="My Approved Trainings" width="24" height="24">
+        </div>
+        <div class="metric-label">MY APPROVED TRAININGS</div>
+        <hr class="metric-divider" />
+        <div class="metric-value">{{ dashboardMetrics?.approvedTrainings || 0 }}</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <img src="/assets/SP My Approved Timesheets.svg" alt="My Approved Timesheets" width="24" height="24">
+        </div>
+        <div class="metric-label">MY APPROVED TIMESHEETS</div>
+        <hr class="metric-divider" />
+        <div class="metric-value">{{ dashboardMetrics?.approvedTimesheets || 0 }}</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <img src="/assets/SP My Apprisals.svg" alt="My Appraisals" width="24" height="24">
+        </div>
+        <div class="metric-label">MY APPRAISALS</div>
+        <hr class="metric-divider" />
+        <div class="metric-value">{{ dashboardMetrics?.appraisals || 0 }}</div>
+      </div>
+    </div>
+  </div>
+</div>

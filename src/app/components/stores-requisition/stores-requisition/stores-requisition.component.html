@@ -1,0 +1,142 @@
+<div class="stores-requisition-container">
+  <app-sidebar [sidebarType]="'finance'"></app-sidebar>
+  <div class="main-content">
+    <app-header 
+      title="Financial Services" 
+      subtitle="Finance Services/Stores Requisition"
+      headerClass="finance"
+      [showBackButton]="false">
+    </app-header>
+    <div class="stores-requisition-content">
+      <div class="stores-requisition-section">
+        <div class="section-header">
+          <div class="section-title">
+            <h2>STORES REQUISITIONS</h2>
+          </div>
+          <button class="btn btn-primary add-new-btn" (click)="addNew()">
+            <img src="assets/Add.svg" alt="Edit" width="24" height="24" />
+            ADD NEW STORES REQUISITION
+          </button>
+        </div>
+        <div class="search-section">
+          <div class="search-container">
+            <button class="filter-btn">
+              <img src="assets/Add filter.svg" alt="Add filter" width="10" height="10" style="margin-right: 6px;" /> Add filter
+            </button>
+            <div class="search-box">
+              <img src="assets/Search here.svg" alt="Search here" width="10" height="10" class="search-icon" />
+              <input type="text" placeholder="Search here" [(ngModel)]="searchTerm">
+            </div>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="stores-requisition-table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Employee Name</th>
+                <th>Item Description</th>
+                <th>Quantity</th>
+                <th>Unit of Issue</th>
+                <th>Purpose</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let req of filteredRequisitions; let i = index" [class]="i % 2 === 0 ? 'row-white' : 'row-blue'">
+                <td>{{ req.id }}</td>
+                <td>{{ req.employeeName }}</td>
+                <td>{{ req.itemDescription }}</td>
+                <td>{{ req.quantity }}</td>
+                <td>{{ req.unitOfIssue }}</td>
+                <td>{{ req.purpose }}</td>
+                <td>{{ req.status }}</td>
+                <td>
+                  <button class="action-btn edit-btn" (click)="editRequisition(req)">
+                    <img src="assets/editlogo.svg" alt="Edit" width="24" height="24" />
+                    EDIT
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="showNewForm || editingReq" class="modal-form">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>{{ editingReq ? 'Edit Stores Requisition' : 'New Stores Requisition' }}</h3>
+            <button class="close-btn" (click)="closeForm()">&times;</button>
+          </div>
+          <form (ngSubmit)="submitForm()">
+            <!-- Personal Details -->
+            <div class="form-section">
+              <h4>Personal Details</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Employee's Name</label>
+                  <input type="text" [(ngModel)]="formReq.employeeName" name="employeeName" required>
+                </div>
+                <div class="form-group">
+                  <label>Employee's No.</label>
+                  <input type="text" [(ngModel)]="formReq.employeeNumber" name="employeeNumber" required>
+                </div>
+              </div>
+            </div>
+            <!-- Requisition Details -->
+            <div class="form-section">
+              <h4>Requisition Details</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Item Description</label>
+                  <input type="text" [(ngModel)]="formReq.itemDescription" name="itemDescription" required>
+                </div>
+                <div class="form-group">
+                  <label>Quantity</label>
+                  <input type="number" [(ngModel)]="formReq.quantity" name="quantity" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Unit of Issue</label>
+                  <input type="text" [(ngModel)]="formReq.unitOfIssue" name="unitOfIssue" required>
+                </div>
+                <div class="form-group">
+                  <label>Purpose</label>
+                  <input type="text" [(ngModel)]="formReq.purpose" name="purpose" required>
+                </div>
+              </div>
+            </div>
+            <!-- Notes -->
+            <div class="form-section">
+              <div class="form-group">
+                <label>Additional Notes</label>
+                <textarea [(ngModel)]="formReq.notes" name="notes" rows="3"></textarea>
+              </div>
+            </div>
+            <!-- File Upload -->
+            <div class="form-section">
+              <h4>Upload Supporting files</h4>
+              <div class="file-upload-area" (click)="triggerFileUpload()">
+                <div class="upload-icon">☁️</div>
+                <h4>Choose a file or drag & drop it here</h4>
+                <p>JPEG, PNG, PDF, and MP4 formats, up to 50MB</p>
+                <button class="browse-btn" type="button">Browse File</button>
+              </div>
+              <div class="form-group">
+                <label>Document Description</label>
+                <textarea placeholder="Document Description" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">{{ editingReq ? 'Update' : 'Submit' }}</button>
+              <button class="btn btn-success" type="button" (click)="closeForm()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div> 

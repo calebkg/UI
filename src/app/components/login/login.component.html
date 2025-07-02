@@ -1,0 +1,52 @@
+<div class="login-container">
+  <div class="login-left">
+    <div class="logo-container">
+      <div class="logo">
+         <img class="logo-icon" src="assets/naturalstatelogo.svg" alt="Natural State Logo" />
+        <span class="logo-text">NATURAL STATE</span>
+      </div>
+    </div>
+  </div>
+  <div class="login-divider"></div>
+  <div class="login-right">
+    <div class="login-form">
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Enter your email and password to sign in</p>
+      
+      <form (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Your email address">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Email Password</label>
+          <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Your Password">
+        </div>
+        
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <label class="toggle-switch">
+              <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="remember-text">Remember me</span>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn btn-success w-100">LOG IN</button>
+      </form>
+      
+      <div class="forgot-password">
+        Forgot Password? <a (click)="goToReset()" class="reset-link">Reset</a>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <span class="footer-text">
+        <strong>Natural State</strong> © 2025. | Powered by 
+        <a href="https://sysre.co.ke/" target="_blank" class="footer-link">Systems Reengineered Ltd.</a>
+      </span>
+    </div>
+  </div>
+</div>

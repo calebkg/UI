@@ -1,0 +1,83 @@
+<div class="approvers-container">
+    <app-sidebar [sidebarType]="'finance'"></app-sidebar>
+    
+    <div class="main-content">
+      <app-header 
+        title="Financial Services" 
+        subtitle="Finance Services/Fund Claims"
+        headerClass="finance"
+        [showBackButton]="true">
+      </app-header>
+      
+      <div class="approvers-content">
+        <div class="approvers-section">
+          <div class="section-header">
+            <div class="section-title">
+              <h2>FUNDS CLAIM APPROVERS</h2>
+            </div>
+          </div>
+          
+          <div class="search-section">
+            <div class="search-container">
+              <button class="filter-btn">
+                <img src="assets/Add filter.svg" alt="Add filter" width="20" height="20" style="margin-right: 6px;" /> Add filter
+              </button>
+              <div class="search-box">
+                <img src="assets/Search here.svg" alt="Search here" width="18" height="18" class="search-icon" />
+                <input type="text" placeholder="Search here" [(ngModel)]="searchTerm">
+              </div>
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table class="approvers-table">
+              <thead>
+                <tr>
+                  <th>Document No.</th>
+                  <th>Sequence No.</th>
+                  <th>Approver ID</th>
+                  <th>Status</th>
+                  <th>Date Sent for Approval</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let approver of paginatedApprovers; let i = index" 
+                    [class]="i % 2 === 0 ? 'row-white' : 'row-blue'">
+                  <td>{{ approver.documentNo }}</td>
+                  <td>{{ approver.sequenceNo }}</td>
+                  <td>{{ approver.approverId }}</td>
+                  <td>
+                    <span class="status-badge" [class]="'status-' + approver.status.toLowerCase()">
+                      {{ approver.status }}
+                    </span>
+                  </td>
+                  <td>{{ approver.dateSentForApproval }}</td>
+                  <td>{{ approver.time }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="pagination" *ngIf="totalPages > 1">
+            <button class="page-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Prev</button>
+            <button class="page-btn" 
+                    *ngFor="let page of getVisiblePages()" 
+                    [class.active]="page === currentPage"
+                    (click)="goToPage(page)">
+              {{ page }}
+            </button>
+            <span class="page-dots" *ngIf="totalPages > 5 && currentPage < totalPages - 2">...</span>
+            <button class="page-btn" 
+                    *ngIf="totalPages > 5 && currentPage < totalPages - 2"
+                    (click)="goToPage(totalPages)">
+              {{ totalPages }}
+            </button>
+            <button class="page-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">Next</button>
+          </div>
+        </div>
+      </div>
+      
+      <app-footer></app-footer>
+    </div>
+  </div>

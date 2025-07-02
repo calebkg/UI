@@ -1,0 +1,159 @@
+<div class="dashboard-container">
+  <app-sidebar [sidebarType]="'dashboard'" [(open)]="sidebarOpen"></app-sidebar>
+  
+  <div class="main-content">
+    <app-header 
+      [title]="'Hello ' + (currentUser?.name?.split(' ')[0] || '') + ','"
+      subtitle="Welcome to your dashboard!"
+      headerClass="dashboard"
+      [(sidebarOpen)]="sidebarOpen">
+    </app-header>
+    
+    <div class="dashboard-content">
+      <div class="content-row">
+        <div class="services-grid">
+          <div class="service-card finance" (click)="navigateToFinance()">
+            <div class="service-content">
+              <h3>Finance Services</h3>
+              <div class="service-icon"><img src="/assets/FS.png" alt="Finance Services" /></div>
+            </div>
+            <div class="service-footer">
+              <div class="view-more-container">
+                <span class="view-more-text">VIEW MORE</span>
+                <div class="arrow-circle"><img src="/assets/gOO.svg" alt="View More" /></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card hr" (click)="navigateToHR()">
+            <div class="service-content">
+              <h3>HR Services</h3>
+              <div class="service-icon"><img src="/assets/HR.png" alt="HR Services" /></div>
+            </div>
+            <div class="service-footer">
+              <div class="view-more-container">
+                <span class="view-more-text">VIEW MORE</span>
+                <div class="arrow-circle"><img src="/assets/gOO.svg" alt="View More" /></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card payroll">
+            <div class="service-content">
+              <h3>Payroll Services</h3>
+              <div class="service-icon"><img src="/assets/PS.png" alt="Payroll Services" /></div>
+            </div>
+            <div class="service-footer">
+              <div class="view-more-container">
+                <span class="view-more-text">VIEW MORE</span>
+                <div class="arrow-circle"><img src="/assets/gOO.svg" alt="View More" /></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card procurement">
+            <div class="service-content">
+              <h3>Procurement Services</h3>
+              <div class="service-icon"><img src="/assets/PrS.png" alt="Procurement Services" /></div>
+            </div>
+            <div class="service-footer">
+              <div class="view-more-container">
+                <span class="view-more-text">VIEW MORE</span>
+                <div class="arrow-circle"><img src="/assets/gOO.svg" alt="View More" /></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card approval">
+            <div class="service-content">
+              <h3>Approval Services</h3>
+              <div class="service-icon"><img src="/assets/AS.png" alt="Approval Services" /></div>
+            </div>
+            <div class="service-footer">
+              <div class="view-more-container">
+                <span class="view-more-text">VIEW MORE</span>
+                <div class="arrow-circle"><img src="/assets/gOO.svg" alt="View More" /></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card inventory">
+            <div class="service-content">
+              <h3>Inventory Services</h3>
+              <div class="service-icon"><img src="/assets/IS.png" alt="Inventory Services" /></div>
+            </div>
+            <div class="service-footer">
+              <div class="view-more-container">
+                <span class="view-more-text">VIEW MORE</span>
+                <div class="arrow-circle"><img src="/assets/gOO.svg" alt="View More" /></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card documents">
+            <div class="service-content">
+              <h3>Documents & Links</h3>
+              <div class="service-icon"><img src="/assets/DL.png" alt="Documents & Links" /></div>
+            </div>
+            <div class="service-footer">
+              <div class="view-more-container">
+                <span class="view-more-text">VIEW MORE</span>
+                <div class="arrow-circle"><img src="/assets/gOO.svg" alt="View More" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="right-sidebar">
+          <div class="info-card" >
+            <div class="table-container" [ngClass]="{ 'blink': blink }">
+              <div class="table-header">
+                <h3>Leave Balances</h3>
+              </div>
+              <table class="balance-table">
+                <thead>
+                  <tr>
+                    <th>Leave type</th>
+                    <th>Balance(Days)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let balance of leaveBalances; let i = index" 
+                      [class]="i % 2 === 0 ? 'row-white' : 'row-blue'">
+                    <td>{{ balance.leaveType }}</td>
+                    <td>{{ balance.balance | number:'1.1-2' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="table-container" [ngClass]="{ 'blink': blinkFinance }">
+              <div class="table-header">
+                <h3>Finance Management</h3>
+              </div>
+              <table class="finance-table">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Amount (Ksh)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of financeData; let i = index" 
+                      [class]="i % 2 === 0 ? 'row-white' : 'row-blue'">
+                    <td>{{ data.description }}</td>
+                    <td>{{ data.amount | number:'1.2-2' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <app-footer></app-footer>
+  </div>
+</div>

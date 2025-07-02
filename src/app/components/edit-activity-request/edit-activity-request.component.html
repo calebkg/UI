@@ -1,0 +1,320 @@
+<div class="edit-activity-container">
+    <app-sidebar [sidebarType]="'finance'"></app-sidebar>
+    
+    <div class="main-content">
+      <app-header 
+        title="Financial Services" 
+        subtitle="Finance Services/Activity Requests"
+        headerClass="finance"
+        [showBackButton]="true">
+      </app-header>
+      
+      <div class="edit-activity-content">
+        <div class="edit-activity-section">
+          <div class="section-header">
+            <h2>NEW ACTIVITY REQUEST</h2>
+          </div>
+          
+          <div class="section-body">
+            <div class="form-layout">
+              <div class="left-section">
+                <!-- Personal Details -->
+                <div class="form-section">
+                  <h3>Personal Details</h3>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Employee's Name</label>
+                      <input type="text" [(ngModel)]="editRequest.employeeName">
+                    </div>
+                    <div class="form-group">
+                      <label>Employee's Number</label>
+                      <input type="text" [(ngModel)]="editRequest.employeeNumber">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Employee's Email</label>
+                    <input type="email" [(ngModel)]="editRequest.employeeEmail">
+                  </div>
+                </div>
+                
+                <!-- Project Details -->
+                <div class="form-section">
+                  <h3>Project Details</h3>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Project Code</label>
+                      <select [(ngModel)]="editRequest.projectCode">
+                        <option value="">Project Code</option>
+                        <option value="PRJ001">PRJ001</option>
+                        <option value="PRJ002">PRJ002</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Funding Source</label>
+                      <select [(ngModel)]="editRequest.fundingSource">
+                        <option value="">Funding Source</option>
+                        <option value="Internal">Internal</option>
+                        <option value="External">External</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Program Area</label>
+                      <select [(ngModel)]="editRequest.programArea">
+                        <option value="">Program Area</option>
+                        <option value="Health">Health</option>
+                        <option value="Education">Education</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Activity</label>
+                      <select [(ngModel)]="editRequest.activity">
+                        <option value="">Activity</option>
+                        <option value="Training">Training</option>
+                        <option value="Meeting">Meeting</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>County</label>
+                      <select [(ngModel)]="editRequest.county">
+                        <option value="">County</option>
+                        <option value="Nairobi">Nairobi</option>
+                        <option value="Mombasa">Mombasa</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Site</label>
+                      <select [(ngModel)]="editRequest.site">
+                        <option value="">Site</option>
+                        <option value="Site A">Site A</option>
+                        <option value="Site B">Site B</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Dates and Amount -->
+                <div class="form-section">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Start Date</label>
+                      <input type="date" [(ngModel)]="editRequest.startDate">
+                    </div>
+                    <div class="form-group">
+                      <label>End Date</label>
+                      <input type="date" [(ngModel)]="editRequest.endDate">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Currency</label>
+                      <input type="text" [(ngModel)]="editRequest.currency">
+                    </div>
+                    <div class="form-group">
+                      <label>Amount</label>
+                      <input type="number" [(ngModel)]="editRequest.amount">
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="form-section">
+                  <div class="form-group">
+                    <label>Edit Description</label>
+                    <textarea [(ngModel)]="editRequest.description" rows="3"></textarea>
+                  </div>
+                </div>
+                
+                <!-- Add New Imprest Line Button -->
+                <button class="btn btn-primary add-line-btn" (click)="openAddLineModal()">
+                  <i class="icon-plus">📄</i>
+                  ADD NEW IMPREST LINE
+                </button>
+                
+                <!-- Imprest Lines Table -->
+                <div class="imprest-table-container" *ngIf="imprestLines.length > 0">
+                  <table class="imprest-table">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Document Date</th>
+                        <th>Currency</th>
+                        <th>Amount</th>
+                        <th>Date To</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let line of imprestLines">
+                        <td>{{ line.no }}</td>
+                        <td>{{ line.documentDate }}</td>
+                        <td>{{ line.currency }}</td>
+                        <td>{{ line.amount | number:'1.0-0' }}</td>
+                        <td>{{ line.dateTo }}</td>
+                        <td>{{ line.description }}</td>
+                        <td>
+                          <span class="status-badge status-open">{{ line.status }}</span>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="action-btn edit-btn small" (click)="editImprestLine(line)">
+                              <img src="assets/editlogo.svg" alt="Edit" width="24" height="24" />
+                              EDIT
+                            </button>
+                            <button class="action-btn delete-btn small" (click)="deleteImprestLine(line)">
+                              <img src="assets/delete.svg" alt="Delete" width="24" height="24" />
+                              DELETE
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              <div class="right-section">
+                <!-- Supporting Files -->
+                <div class="files-section">
+                  <h3>Edit Supporting Files</h3>
+                  
+                  <!-- Uploaded Files -->
+                  <div class="uploaded-files">
+                    <div class="file-item" *ngFor="let file of supportingFiles">
+                      <div class="file-icon" [class]="'file-' + file.type">
+                        <img *ngIf="file.type === 'pdf'" src="assets/pdf.svg" alt="PDF" width="28" height="28" />
+                        <img *ngIf="file.type === 'png'" src="assets/png.svg" alt="PNG" width="28" height="28" />
+                        <img *ngIf="file.type === 'jpg'" src="assets/jpg.svg" alt="JPG" width="28" height="28" />
+                      </div>
+                      <div class="file-info">
+                        <div class="file-name">{{ file.name }}</div>
+                        <div class="file-size">{{ file.size }}</div>
+                      </div>
+                      <button class="delete-file-btn" (click)="removeFile(file)">🗑️</button>
+                    </div>
+                    
+                    <div class="edit-description">
+                      <label>Edit Description</label>
+                      <textarea placeholder="Lorem ipsum dolor sit amet consectetur. Amet sit pellentesque consequat nibh ut diam eget amet nec." rows="2"></textarea>
+                    </div>
+                    
+                    <div class="edit-description">
+                      <label>Edit Description</label>
+                      <textarea placeholder="Lorem ipsum dolor sit amet consectetur. Amet sit pellentesque consequat nibh ut diam eget amet nec." rows="2"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="section-footer">
+            <button class="btn btn-primary" (click)="submitEditRequest()">submit</button>
+            <button class="btn btn-success" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <span class="footer-text">
+          <strong>InsupplyHealth</strong> © 2025. | Powered by 
+          <a href="https://sysre.co.ke/" target="_blank" class="footer-link">Systems Reengineered Ltd.</a>
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add/Edit Imprest Line Modal with Glossy Blur Background -->
+  <div class="modal-overlay" *ngIf="showAddLineModal" (click)="closeAddLineModal()">
+    <div class="modal-content add-line-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Imprest Line</h2>
+      </div>
+      
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Imprest Code</label>
+          <select [(ngModel)]="newImprestLine.imprestCode">
+            <option value="">Imprest Code</option>
+            <option value="IMP001">IMP001</option>
+            <option value="IMP002">IMP002</option>
+          </select>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Unit Cost</label>
+            <input type="number" [(ngModel)]="newImprestLine.unitCost" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" [(ngModel)]="newImprestLine.quantity" placeholder="0">
+          </div>
+        </div>
+        
+        <h3>Project Details</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Project Code</label>
+            <select [(ngModel)]="newImprestLine.projectCode">
+              <option value="">Project Code</option>
+              <option value="PRJ001">PRJ001</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Funding Source</label>
+            <select [(ngModel)]="newImprestLine.fundingSource">
+              <option value="">Funding Source</option>
+              <option value="Internal">Internal</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Program Area</label>
+            <select [(ngModel)]="newImprestLine.programArea">
+              <option value="">Program Area</option>
+              <option value="Health">Health</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Activity</label>
+            <select [(ngModel)]="newImprestLine.activity">
+              <option value="">Activity</option>
+              <option value="Meeting">Meeting</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>County</label>
+            <select [(ngModel)]="newImprestLine.county">
+              <option value="">County</option>
+              <option value="Nairobi">Nairobi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Site</label>
+            <select [(ngModel)]="newImprestLine.site">
+              <option value="">Site</option>
+              <option value="Site A">Site A</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Description</label>
+          <textarea [(ngModel)]="newImprestLine.description" placeholder="Description" rows="3"></textarea>
+        </div>
+      </div>
+      
+      <app-footer></app-footer>
+    </div>
+  </div>

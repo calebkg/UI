@@ -1,0 +1,142 @@
+<div class="new-leave-container">
+  <app-sidebar [sidebarType]="'hr'"></app-sidebar>
+  
+  <div class="main-content">
+    <app-header 
+      title="HR Services" 
+      subtitle="HR Services/Leave Application"
+      headerClass="finance"
+      [showBackButton]="true">
+    </app-header>
+    
+    <div class="new-leave-content">
+      <div class="new-leave-section card-effect">
+        <div class="section-header">
+          <h2>NEW LEAVE APPLICATION</h2>
+        </div>
+        
+        <div class="section-body">
+          <div class="form-layout">
+            <div class="left-section">
+              <!-- Personal Details -->
+              <div class="form-section">
+                <h3>Personal Details</h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Employee's Name</label>
+                    <input type="text" [(ngModel)]="newApplication.employeeName" placeholder="Employee's name">
+                  </div>
+                  <div class="form-group">
+                    <label>Employee's No.</label>
+                    <input type="text" [(ngModel)]="newApplication.employeeNumber" placeholder="Employee's no.">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Leave Details -->
+              <div class="form-section">
+                <h3>Leave Details</h3>
+                <div class="form-group input-icon-wrapper">
+                  <label>Leave Type</label>
+                  <select [(ngModel)]="newApplication.leaveType">
+                    <option value="">Leave Type</option>
+                    <option value="Annual Leave Grade 8">Annual Leave Grade 8</option>
+                    <option value="Sick Leave">Sick Leave</option>
+                    <option value="Maternity Leave">Maternity Leave</option>
+                    <option value="Paternity Leave">Paternity Leave</option>
+                  </select>
+                  <span class="input-icon chevron-icon">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="#214098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group input-icon-wrapper">
+                    <label>Leave Start Date</label>
+                    <input type="date" [(ngModel)]="newApplication.startDate">
+                    <span class="input-icon calendar-icon">
+                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M7 2v2M17 2v2M3 8h18M5 8v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M5 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" stroke="#214098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="9" y="12" width="6" height="6" rx="1" fill="#214098"/></svg>
+                    </span>
+                  </div>
+                  <div class="form-group input-icon-wrapper">
+                    <label>Leave End Date</label>
+                    <input type="date" [(ngModel)]="newApplication.endDate">
+                    <span class="input-icon calendar-icon">
+                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M7 2v2M17 2v2M3 8h18M5 8v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M5 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" stroke="#214098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="9" y="12" width="6" height="6" rx="1" fill="#214098"/></svg>
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label>Applied Days</label>
+                  <input type="text" [(ngModel)]="newApplication.appliedDays" placeholder="Days">
+                </div>
+                
+                <div class="form-group">
+                  <label>Reason for Leave</label>
+                  <textarea [(ngModel)]="newApplication.reason" placeholder="Reason for Leave" rows="3"></textarea>
+                </div>
+              </div>
+              
+              <!-- Annual Leave Ledger -->
+              <div class="ledger-section ledger-card">
+                <div class="ledger-header">
+                  <h3>Annual Leave Ledger</h3>
+                </div>
+                <div class="ledger-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Days CF</th>
+                        <th>Days Earned</th>
+                        <th>Leave type</th>
+                        <th>Leave Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>4.9766666</td>
+                        <td>10.4166666</td>
+                        <td>-5</td>
+                        <td>10.39333333</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            
+            <div class="right-section">
+              <!-- Supporting Files -->
+              <div class="files-section file-upload-card">
+                <h3>Upload Supporting files</h3>
+                <p class="files-subtitle">Select and upload the files of your choice</p>
+                
+                <div class="file-upload-area styled-upload-area" (click)="triggerFileUpload()">
+                  <div class="upload-icon">
+                    <img src="assets/cloud-add.svg" alt="Upload" width="48" height="48" />
+                  </div>
+                  <h4>Choose a file or drag & drop it here</h4>
+                  <p>JPEG, PNG, PDF, and MP4 formats, up to 50MB</p>
+                  <button class="browse-btn">Browse File</button>
+                </div>
+                
+                <div class="form-group">
+                  <label>Document Description</label>
+                  <textarea placeholder="Document Description" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section-footer">
+          <button class="btn btn-primary" (click)="submitApplication()">submit</button>
+          <button class="btn btn-success" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+    
+    <app-footer></app-footer>
+  </div>
+</div> 
