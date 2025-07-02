@@ -18,7 +18,7 @@
     flex: 1;
     padding: 30px;
     position: relative;
-    margin-top: -60px; /* Updated to match stores requisition */
+    margin-top: -60px; /* Updated to match activity requests */
     z-index: 10;
   }
   
@@ -441,6 +441,7 @@
   @media (max-width: 600px) {
     .hr-content {
       padding: 15px 10px;
+      margin-top: -25px; /* Even less overlap on small mobile */
     }
     
     .section-header {
