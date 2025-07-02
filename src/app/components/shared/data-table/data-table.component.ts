@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, TemplateRef, OnInit, OnDestroy 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { AdvancedPaginationComponent } from '../advanced-pagination/advanced-pagination.component';
 
 export interface TableColumn {
   key: string;
@@ -29,7 +30,7 @@ export interface PaginationConfig {
 @Component({
   selector: 'app-data-table',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdvancedPaginationComponent],
   template: `
     <!-- Loading State -->
     <div *ngIf="loading" class="loading-container">
