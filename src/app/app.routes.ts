@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ComponentsComponent } from './components/components/components.component';
 import { ActivityRequestsComponent } from './components/activity-requests/activity-requests.component';
+import { EnhancedActivityRequestsComponent } from './components/activity-requests/enhanced-activity-requests.component';
 import { NewActivityRequestComponent } from './components/new-activity-request/new-activity-request.component';
 import { EditActivityRequestComponent } from './components/edit-activity-request/edit-activity-request.component';
 import { TravelAuthorizationComponent } from './components/travel-authorization/travel-authorization.component';
@@ -32,6 +33,7 @@ export const routes: Routes = [
   // Redirect finance-services to activity-requests
   { path: 'finance-services', redirectTo: '/activity-requests', pathMatch: 'full' },
   { path: 'activity-requests', component: ActivityRequestsComponent },
+  { path: 'enhanced-activity-requests', component: EnhancedActivityRequestsComponent },
   { path: 'new-activity-request', component: NewActivityRequestComponent },
   { path: 'edit-activity-request/:id', component: EditActivityRequestComponent },
   { path: 'travel-authorization', component: TravelAuthorizationComponent },
