@@ -29,6 +29,7 @@ export class HrServicesComponent {
   searchTerm = '';
   currentPage = 1;
   itemsPerPage = 10;
+  sidebarOpen = false;
   
   leaveApplications: LeaveApplication[] = [
     {

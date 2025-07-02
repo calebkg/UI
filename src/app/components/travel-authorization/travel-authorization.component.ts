@@ -31,6 +31,7 @@ export class TravelAuthorizationComponent {
   searchTerm = '';
   currentPage = 1;
   itemsPerPage = 10;
+  sidebarOpen = false;
   
   imprestRequests: ImprestRequest[] = [
     {

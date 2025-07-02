@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: margin-left 0.3s ease;
 }
 
 .fund-claims-content {
@@ -124,6 +125,7 @@
   width: 100%;
   border-collapse: collapse;
   background: var(--white);
+  min-width: 800px;
 }
 
 .fund-claims-table th {
@@ -206,6 +208,77 @@
   background: var(--primary-blue) ;
 }
 
+/* Mobile Cards */
+.mobile-cards {
+  display: none;
+  padding: 20px;
+}
+
+.claim-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+.card-header {
+  background: var(--accent-green);
+  color: var(--white);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-number {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.card-body {
+  padding: 15px 20px;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+
+.card-label {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 12px;
+  min-width: 80px;
+}
+
+.card-value {
+  color: var(--text-light);
+  font-size: 12px;
+  text-align: right;
+  flex: 1;
+  margin-left: 10px;
+  word-wrap: break-word;
+}
+
+.card-actions {
+  padding: 15px 20px;
+  border-top: 1px solid #e9ecef;
+  background: #f8f9fa;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn.mobile {
+  padding: 8px 12px;
+  font-size: 10px;
+  margin: 0;
+}
+
 .pagination {
   padding: 20px 30px;
   display: flex;
@@ -252,7 +325,7 @@
   text-align: center;
   border-top: 1px solid #e9ecef;
   margin-top: auto;
-  margin-left: -370px;
+  margin-left: -280px;
   width: calc(100% + 280px);
   box-shadow: none;
 }
@@ -273,13 +346,35 @@
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+/* Responsive Design */
+@media (max-width: 1200px) {
   .main-content {
-    margin-left: 0;
+    margin-left: 260px;
+  }
+  
+  .footer {
+    margin-left: -260px;
+    padding-left: 260px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0 !important;
+  }
+  
+  .footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+  
+  .footer-text {
+    padding-left: 0 !important;
   }
   
   .fund-claims-content {
-    padding: 20px;
+    padding: 20px 15px;
     margin-top: -40px;
   }
   
@@ -287,10 +382,95 @@
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
+    padding: 15px 20px;
   }
   
   .search-container {
     flex-direction: column;
     align-items: stretch;
+    gap: 15px;
+  }
+  
+  .search-section {
+    padding: 15px 20px;
+  }
+  
+  .section-title h2 {
+    font-size: 16px;
+  }
+  
+  .add-new-btn {
+    font-size: 11px;
+    padding: 10px 16px;
+  }
+  
+  .mobile-cards {
+    display: block;
+  }
+  
+  .hide-mobile {
+    display: none;
+  }
+  
+  .show-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .fund-claims-content {
+    padding: 15px 10px;
+  }
+  
+  .section-header {
+    padding: 12px 15px;
+  }
+  
+  .search-section {
+    padding: 12px 15px;
+  }
+  
+  .pagination {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .section-title h2 {
+    font-size: 14px;
+  }
+  
+  .add-new-btn {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+  
+  .mobile-cards {
+    padding: 15px;
+  }
+  
+  .claim-card {
+    margin-bottom: 12px;
+  }
+  
+  .card-header,
+  .card-body,
+  .card-actions {
+    padding: 12px 15px;
+  }
+}
+
+/* Desktop visibility controls */
+@media (min-width: 901px) {
+  .hide-desktop {
+    display: none !important;
+  }
+  
+  .show-desktop {
+    display: block !important;
+  }
+  
+  .mobile-cards {
+    display: none !important;
   }
 }

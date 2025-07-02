@@ -1,12 +1,13 @@
 <div class="fund-claims-container">
-  <app-sidebar [sidebarType]="'finance'"></app-sidebar>
+  <app-sidebar [sidebarType]="'finance'" [(open)]="sidebarOpen"></app-sidebar>
   
   <div class="main-content">
     <app-header 
       title="Financial Services" 
       subtitle="Finance Services/Fund Claims"
       headerClass="finance"
-      [showBackButton]="false">
+      [showBackButton]="false"
+      [(sidebarOpen)]="sidebarOpen">
     </app-header>
     
     <div class="fund-claims-content">
@@ -33,7 +34,8 @@
           </div>
         </div>
         
-        <div class="table-container">
+        <!-- Desktop Table -->
+        <div class="table-container hide-mobile">
           <table class="fund-claims-table">
             <thead>
               <tr>
@@ -78,6 +80,46 @@
           </table>
         </div>
         
+        <!-- Mobile Card View -->
+        <div class="mobile-cards show-mobile">
+          <div class="claim-card" *ngFor="let claim of paginatedClaims; let i = index">
+            <div class="card-header">
+              <span class="card-number">{{ claim.no }}</span>
+              <span class="status-badge" [class]="'status-' + claim.status.toLowerCase()">
+                {{ claim.status }}
+              </span>
+            </div>
+            <div class="card-body">
+              <div class="card-row">
+                <span class="card-label">Amount:</span>
+                <span class="card-value">{{ claim.currency }} {{ claim.amount | number:'1.0-0' }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Project:</span>
+                <span class="card-value">{{ claim.project }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Description:</span>
+                <span class="card-value">{{ claim.description }}</span>
+              </div>
+              <div class="card-row">
+                <span class="card-label">Comments:</span>
+                <span class="card-value">{{ claim.approvalComments }}</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="action-btn edit-btn mobile" (click)="editClaim(claim)">
+                <img src="assets/editlogo.svg" alt="Edit" width="16" height="16" />
+                EDIT
+              </button>
+              <button class="action-btn approvers-btn mobile" (click)="viewApprovers(claim)">
+                <img src="assets/approverslogo.svg" alt="Approvers" width="16" height="16" />
+                APPROVERS
+              </button>
+            </div>
+          </div>
+        </div>
+        
         <div class="pagination" *ngIf="totalPages > 1">
           <button class="page-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Prev</button>
           <button class="page-btn" 
@@ -99,4 +141,4 @@
     
     <app-footer></app-footer>
   </div>
-</div> 
+</div>

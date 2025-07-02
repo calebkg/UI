@@ -1,12 +1,13 @@
 <div class="hr-container">
-    <app-sidebar [sidebarType]="'hr'"></app-sidebar>
+    <app-sidebar [sidebarType]="'hr'" [(open)]="sidebarOpen"></app-sidebar>
     
     <div class="main-content">
       <app-header 
         title="HR Services" 
         subtitle="HR Services/Leave Application"
         headerClass="finance"
-        [showBackButton]="false">
+        [showBackButton]="false"
+        [(sidebarOpen)]="sidebarOpen">
       </app-header>
       
       <div class="hr-content">
@@ -33,7 +34,8 @@
             </div>
           </div>
           
-          <div class="table-container">
+          <!-- Desktop Table -->
+          <div class="table-container hide-mobile">
             <table class="leave-table">
               <thead>
                 <tr>
@@ -82,6 +84,54 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          
+          <!-- Mobile Card View -->
+          <div class="mobile-cards show-mobile">
+            <div class="application-card" *ngFor="let application of paginatedApplications; let i = index">
+              <div class="card-header">
+                <span class="card-number">{{ application.no }}</span>
+                <span class="status-badge" [class]="'status-' + application.status.toLowerCase().replace(' ', '-')">
+                  {{ application.status }}
+                </span>
+              </div>
+              <div class="card-body">
+                <div class="card-row">
+                  <span class="card-label">Leave Type:</span>
+                  <span class="card-value">{{ application.leaveType }}</span>
+                </div>
+                <div class="card-row">
+                  <span class="card-label">Period:</span>
+                  <span class="card-value">{{ application.startDate }} - {{ application.endDate }}</span>
+                </div>
+                <div class="card-row">
+                  <span class="card-label">Applied Days:</span>
+                  <span class="card-value">{{ application.appliedDays }}</span>
+                </div>
+                <div class="card-row">
+                  <span class="card-label">Approved Days:</span>
+                  <span class="card-value">{{ application.approvedDays }}</span>
+                </div>
+                <div class="card-row">
+                  <span class="card-label">Comments:</span>
+                  <span class="card-value">{{ application.approvalComments }}</span>
+                </div>
+              </div>
+              <div class="card-actions">
+                <button class="action-btn edit-btn mobile" (click)="editApplication(application)">
+                  <img src="assets/editlogo.svg" alt="Edit" width="16" height="16" />
+                  EDIT
+                </button>
+                <button class="action-btn view-btn mobile" (click)="viewApplication(application)">
+                  <img src="assets/view.svg" alt="View" width="16" height="16" />
+                  VIEW
+                </button>
+                <button class="action-btn approvers-btn mobile" (click)="viewApprovers(application)">
+                  <img src="assets/approverslogo.svg" alt="Approvers" width="16" height="16" />
+                  APPROVER(S)
+                </button>
+              </div>
+            </div>
           </div>
           
           <div class="pagination" *ngIf="totalPages > 1">
