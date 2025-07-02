@@ -212,8 +212,6 @@
   margin-top: auto;
   width: 100%;
   box-shadow: none;
-  position: absolute;
-  bottom: 0;
 }
 
 .footer-text {
@@ -324,6 +322,7 @@
     justify-content: flex-start;
     padding-top: 60px;
     margin: 0;
+    background: transparent;
   }
   
   .mobile-logo {

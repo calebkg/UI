@@ -18,7 +18,7 @@
   flex: 1;
   padding: 30px;
   position: relative;
-  margin-top: -60px;
+  margin-top: -40px; /* Reduced overlap with header */
   z-index: 10;
 }
 
@@ -276,7 +276,7 @@
   
   .new-activity-content {
     padding: 20px 15px;
-    margin-top: -40px;
+    margin-top: -30px; /* Reduced overlap on mobile */
   }
   
   .section-body {
@@ -304,6 +304,7 @@
 @media (max-width: 600px) {
   .new-activity-content {
     padding: 15px 10px;
+    margin-top: -25px; /* Even less overlap on small mobile */
   }
   
   .section-body {
@@ -335,6 +336,19 @@
   }
   
   .file-upload-area p {
+    font-size: 12px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  
+  .footer {
+    padding: 12px;
+  }
+  
+  .footer-text {
     font-size: 12px;
   }
 }
