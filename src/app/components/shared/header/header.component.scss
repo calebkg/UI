@@ -122,14 +122,23 @@
   font-size: 16px;
 }
 
+/* Mobile controls */
+.mobile-controls {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  width: 100%;
+}
+
 /* Hamburger Menu */
 .hamburger-btn {
-  display: none;
   background: rgba(255, 255, 255, 0.2);
   border: none;
   cursor: pointer;
   padding: 8px;
   border-radius: 6px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -149,6 +158,29 @@
   margin: 2px 0;
   transition: all 0.3s ease;
   border-radius: 2px;
+}
+
+/* Mobile logout button */
+.mobile-logout {
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.mobile-logout .icon-logout {
+  width: 20px;
+  height: 20px;
+}
+
+/* Desktop/Mobile visibility controls */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
 }
 
 /* Metrics Section */
@@ -228,8 +260,12 @@
 }
 
 @media (max-width: 900px) {
-  .hamburger-btn {
-    display: flex;
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-controls {
+    display: flex !important;
   }
   
   .header {
@@ -238,44 +274,19 @@
   }
   
   .header-content {
-    gap: 15px;
-  }
-  
-  .user-section {
-    gap: 10px;
-  }
-  
-  .user-info {
-    gap: 8px;
-  }
-  
-  .user-avatar {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .user-details {
-    font-size: 0.9rem;
-  }
-  
-  .user-name, .user-email {
-    font-size: 0.8rem;
-    line-height: 1.2;
-  }
-  
-  .logout-btn {
-    font-size: 0.8rem;
-    padding: 6px 12px;
+    justify-content: center;
   }
   
   .header-text h1 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 0;
+    text-align: center;
   }
   
   .header-text .subtitle {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin: 2px 0 0 0;
+    text-align: center;
   }
   
   .metrics-container {
@@ -302,15 +313,12 @@
     padding: 12px 15px;
   }
   
-  .header-content {
-    flex-direction: column;
-    gap: 10px;
+  .header-text h1 {
+    font-size: 1.2rem;
   }
   
-  .user-section {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+  .header-text .subtitle {
+    font-size: 0.9rem;
   }
   
   .metrics-container {
@@ -318,11 +326,32 @@
     gap: 10px;
   }
   
-  .header-text h1 {
-    font-size: 1.1rem;
+  .metric-card {
+    padding: 10px 8px;
   }
   
-  .header-text .subtitle {
-    font-size: 0.8rem;
+  .metric-label {
+    font-size: 7px;
   }
+  
+  .metric-value {
+    font-size: 18px;
+  }
+  
+  .mobile-controls {
+    margin-top: 10px;
+  }
+}
+
+/* Animation for hamburger menu */
+.hamburger-btn.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
