@@ -9,13 +9,18 @@ body {
 
 :root {
   --primary-green: #A6CE3A;
-  --dark-green: #8fb82e;
+  --dark-green: #2F6A00;
   --primary-red: #e74c3c;
   --dark-red: #c0392b;
   --text-dark: #333;
   --text-light: #666;
   --border-light: #ddd;
   --bg-light: #f9f9f9;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .app-content {

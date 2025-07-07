@@ -7,9 +7,11 @@
   position: fixed;
   left: 0;
   top: 0;
-  height: 100vh;
+  height: 80vh;
   z-index: 100;
   transition: left 0.3s ease;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
@@ -34,7 +36,7 @@
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 12px 15px;
   color: #fff;
   text-decoration: none;
@@ -44,7 +46,8 @@
   font-weight: 600;
   font-size: 14px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .nav-item:hover {
@@ -54,8 +57,8 @@
 
 .nav-item.active {
   background: #fff;
-  color: #A6CE3A;
-  border: none;
+  color: #2F6A00;
+  border: 2px solid #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
