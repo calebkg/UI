@@ -15,13 +15,12 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
-  declarations: [
-    App
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    App,
     ProfileFormComponent,
     VacanciesComponent,
     MyApplicationsComponent,
