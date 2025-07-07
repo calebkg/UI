@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 interface Vacancy {
   requisitionNo: string;
@@ -12,7 +12,7 @@ interface Vacancy {
 @Component({
   selector: 'app-vacancies',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './vacancies.component.html',
   styleUrls: ['./vacancies.component.scss']
 })
@@ -48,7 +48,8 @@ export class VacanciesComponent {
   
   applyForVacancy(vacancy: Vacancy) {
     console.log('Applying for vacancy:', vacancy);
-    // Navigate to application form
+    // Navigate to application form with the job ID
+    this.router.navigate(['/apply', vacancy.jobNo]);
   }
   
   get filteredVacancies() {
