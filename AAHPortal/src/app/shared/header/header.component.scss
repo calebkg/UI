@@ -1,0 +1,185 @@
+.header {
+  background: #A6CE3A;
+  padding: 20px 30px;
+  color: #fff;
+  position: relative;
+  border-radius: 20px;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  color: #fff;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-2px);
+}
+
+.icon-back {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header-text {
+  flex: 1;
+}
+
+.header-text h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  object-fit: cover;
+}
+
+.user-details {
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-email {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Hamburger Menu */
+.hamburger-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  margin: 2px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Mobile logout button */
+.mobile-logout {
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Desktop/Mobile visibility controls */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: flex !important;
+  }
+  
+  .header {
+    margin: 10px;
+    padding: 15px 20px;
+  }
+  
+  .header-content {
+    justify-content: space-between;
+  }
+  
+  .header-text {
+    text-align: center;
+  }
+  
+  .header-text h1 {
+    font-size: 22px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+  }
+}
