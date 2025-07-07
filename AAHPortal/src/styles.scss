@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  background: #A6CE3A;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-content {
+  background: #f7faf3;
+  border-radius: 18px;
+  margin: 24px auto;
+  padding: 32px;
+  max-width: 1200px;
+  min-height: 80vh;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+}
