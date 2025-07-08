@@ -56,10 +56,19 @@
 }
 
 .nav-item.active {
-  background: #fff;
-  color: #A6CE3A;
-  border: 2px solid #fff;
+  background: #A6CE3A;
+  color: #fff;
+  border: 2px solid #A6CE3A;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
 .account-section {

@@ -76,27 +76,54 @@
   gap: 8px;
   cursor: pointer;
   font-size: 14px;
+  color: #b3b3b3;
+  font-weight: 400;
+}
+
+.applications-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  filter: grayscale(1) brightness(0.7);
+}
+
+.filter-btn .applications-icon {
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  margin-right: 0;
 }
 
 .search-box {
   flex: 1;
   position: relative;
+  display: flex;
+  align-items: center;
+  background: #fcfbfa;
+  border-radius: 5px;
+  border: 1px solid #eee;
 }
 
-.icon-search {
+.search-box .applications-icon {
   position: absolute;
   left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
 }
 
 .search-box input {
   width: 100%;
-  padding: 10px 15px 10px 40px;
-  border: 1px solid #ddd;
+  padding: 10px 15px 10px 44px;
+  border: none;
+  background: transparent;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 16px;
+  color: #8a8a8a;
+  outline: none;
+  font-weight: 400;
 }
 
 .table-container {
