@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FooterComponent } from '../shared/footer/footer.component';
 
 @Component({
   selector: 'app-profile-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FooterComponent],
   templateUrl: './profile-form.component.html',
   styleUrls: ['./profile-form.component.scss']
 })
