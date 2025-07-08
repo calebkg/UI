@@ -175,7 +175,7 @@
 /* Main Content Styles */
 .main-content {
   flex: 1;
-  margin-left: 260px;
+  margin-left: 320px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -276,6 +276,8 @@
 
 /* Form Content */
 .form-content {
+  margin: 0;
+  max-width: 100%;
   flex: 1;
   padding: 0 30px 30px;
   background: #fff;
@@ -561,5 +563,33 @@
   
   .header-user {
     align-self: flex-end;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    background: #cfc;
+  }
+  .main-content {
+    margin-left: 0;
+    background: #ccf;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .form-content, .vacancies-content {
+    margin: 0;
+    padding: 0 5px;
+    width: 100%;
+    max-width: 100%;
   }
 }

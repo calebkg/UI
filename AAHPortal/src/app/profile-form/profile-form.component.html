@@ -1,635 +1,540 @@
-<div class="profile-container">
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="logo-container">
-      <img src="assets/aah-logo.png" alt="AAH Logo" class="logo">
-    </div>
+<!-- Progress Steps and Form Content (unchanged) -->
+<div class="progress-steps">
+  <div class="step" [class.active]="currentStep >= 1" [class.completed]="currentStep > 1">
+    <div class="step-number">01</div>
+    <div class="step-label">PERSONAL INFORMATION</div>
+  </div>
+  <div class="step" [class.active]="currentStep >= 2" [class.completed]="currentStep > 2">
+    <div class="step-number">02</div>
+    <div class="step-label">EDUCATION HISTORY</div>
+  </div>
+  <div class="step" [class.active]="currentStep >= 3" [class.completed]="currentStep > 3">
+    <div class="step-number">03</div>
+    <div class="step-label">EMPLOYMENT HISTORY</div>
+  </div>
+  <div class="step" [class.active]="currentStep >= 4" [class.completed]="currentStep > 4">
+    <div class="step-number">04</div>
+    <div class="step-label">REFEREES</div>
+  </div>
+  <div class="step" [class.active]="currentStep >= 5">
+    <div class="step-number">05</div>
+    <div class="step-label">SUMMARY</div>
+  </div>
+</div>
+<div class="form-content">
+  <!-- Step 1: Personal Information -->
+  <div *ngIf="currentStep === 1" class="step-content">
+    <h3>Personal Information</h3>
     
-    <nav class="nav-menu">
-      <a routerLink="/profile" routerLinkActive="active" class="nav-item">
-        <i class="icon-profile">👤</i>
-        MY PROFILE
-      </a>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName">First Name: <span class="required">*</span></label>
+        <input type="text" id="firstName" name="firstName" [(ngModel)]="personalInfo.firstName" required>
+      </div>
       
-      <a routerLink="/vacancies" routerLinkActive="active" class="nav-item">
-        <i class="icon-vacancies">🔍</i>
-        VACCANCIES
-      </a>
-      
-      <a routerLink="/applications" routerLinkActive="active" class="nav-item">
-        <i class="icon-applications">📝</i>
-        MY APPLICATIONS
-      </a>
-    </nav>
-    
-    <div class="account-section">
-      <h4>ACCOUNT PAGE</h4>
-      
-      <a routerLink="/profile-summary" routerLinkActive="active" class="nav-item">
-        <i class="icon-summary">📄</i>
-        PROFILE SUMMARY
-      </a>
-      
-      <a routerLink="/edit-profile" routerLinkActive="active" class="nav-item">
-        <i class="icon-edit">✏️</i>
-        EDIT PROFILE
-      </a>
-    </div>
-    
-    <div class="help-section">
-      <div class="help-card">
-        <div class="help-icon">?</div>
-        <h4>Need help?</h4>
-        <p>Please check our docs</p>
-        <button class="btn btn-light">DOCUMENTATION</button>
+      <div class="form-group">
+        <label for="middleName">Middle Name:</label>
+        <input type="text" id="middleName" name="middleName" [(ngModel)]="personalInfo.middleName">
       </div>
     </div>
     
-    <div class="user-section">
-      <div class="user-info">
-        <img src="assets/user.png" alt="User" class="user-avatar">
-        <div class="user-details">
-          <div class="user-name">Brianna Kirui</div>
-          <div class="user-email">technical&#64;sysre.co.ke</div>
-        </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="lastName">Last Name: <span class="required">*</span></label>
+        <input type="text" id="lastName" name="lastName" [(ngModel)]="personalInfo.lastName" required>
       </div>
-      <a class="logout-link" href="#">Log Out</a>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email Address: <span class="required">*</span></label>
+        <input type="email" id="email" name="email" [(ngModel)]="personalInfo.email" required>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="gender">Gender: <span class="required">*</span></label>
+        <input type="text" id="gender" name="gender" [(ngModel)]="personalInfo.gender" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="dateOfBirth">Date Of Birth: <span class="required">*</span></label>
+        <input type="text" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="personalInfo.dateOfBirth" required>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="physicalLocation">Physical Location:</label>
+        <input type="text" id="physicalLocation" name="physicalLocation" [(ngModel)]="personalInfo.physicalLocation">
+      </div>
+      
+      <div class="form-group">
+        <label for="postalAddress">Postal Address:</label>
+        <input type="text" id="postalAddress" name="postalAddress" [(ngModel)]="personalInfo.postalAddress">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="postalCode">Postal Code:</label>
+        <input type="text" id="postalCode" name="postalCode" [(ngModel)]="personalInfo.postalCode">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nationality">Nationality: <span class="required">*</span></label>
+        <input type="text" id="nationality" name="nationality" [(ngModel)]="personalInfo.nationality" required>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="mobileNo">Mobile No: <span class="required">*</span></label>
+        <input type="text" id="mobileNo" name="mobileNo" [(ngModel)]="personalInfo.mobileNo" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="alternativeMobileNo">Alternative Mobile No:</label>
+        <input type="text" id="alternativeMobileNo" name="alternativeMobileNo" [(ngModel)]="personalInfo.alternativeMobileNo">
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
     </div>
   </div>
   
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Header -->
-    <div class="header-bg">
-      <div class="header-content">
-        <div class="header-titles">
-          <h1>PROFILE</h1>
-          <h2 *ngIf="currentStep === 1">ADD PERSONAL INFORMATION</h2>
-          <h2 *ngIf="currentStep === 2">ADD EDUCATION BACKGROUND</h2>
-          <h2 *ngIf="currentStep === 3">ADD EMPLOYMENT HISTORY</h2>
-          <h2 *ngIf="currentStep === 4">ADD REFEREES</h2>
-          <h2 *ngIf="currentStep === 5">ACCOUNT SUMMARY</h2>
-        </div>
-        
-        <div class="header-user">
-          <img src="assets/user.png" alt="User" class="user-avatar">
-          <div class="user-info">
-            <div class="user-name">Brianna Kirui</div>
-            <div class="user-email">technical&#64;sysre.co.ke</div>
+  <!-- Step 2: Education History -->
+  <div *ngIf="currentStep === 2" class="step-content">
+    <h3>Education History</h3>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="institutionName">Institution Name: <span class="required">*</span></label>
+        <input type="text" id="institutionName" name="institutionName" [(ngModel)]="educationInfo.institutionName" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="qualifications">Qualifications: <span class="required">*</span></label>
+        <select id="qualifications" name="qualifications" [(ngModel)]="educationInfo.qualifications" required>
+          <option value="">Select</option>
+          <option value="Degree">Degree</option>
+          <option value="Diploma">Diploma</option>
+          <option value="Certificate">Certificate</option>
+        </select>
+        <div class="error-message" *ngIf="!educationInfo.qualifications">Qualifications is Required</div>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="stateIfHighest">State if highest: <span class="required">*</span></label>
+        <select id="stateIfHighest" name="stateIfHighest" [(ngModel)]="educationInfo.stateIfHighest" required>
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <div class="error-message" *ngIf="!educationInfo.stateIfHighest">Qualification Level is required</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="course">Course: <span class="required">*</span></label>
+        <input type="text" id="course" name="course" [(ngModel)]="educationInfo.course" required>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="areaOfSpecialization">Area of Specialization:</label>
+        <input type="text" id="areaOfSpecialization" name="areaOfSpecialization" [(ngModel)]="educationInfo.areaOfSpecialization">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="award">Award: <span class="required">*</span></label>
+        <input type="text" id="award" name="award" [(ngModel)]="educationInfo.award" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="awardDate">Award Date: <span class="required">*</span></label>
+        <input type="text" id="awardDate" name="awardDate" [(ngModel)]="educationInfo.awardDate" required>
+      </div>
+    </div>
+    
+    <h3>Academic History</h3>
+    
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Institution Name</th>
+            <th>Qualifications</th>
+            <th>Course</th>
+            <th>Specialization</th>
+            <th>Awards</th>
+            <th>Award Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let education of academicHistory; let i = index" [class.even]="i % 2 === 0">
+            <td>{{ education.institutionName }}</td>
+            <td>{{ education.qualifications }}</td>
+            <td>{{ education.course }}</td>
+            <td>{{ education.specialization }}</td>
+            <td>{{ education.awards }}</td>
+            <td>{{ education.awardDate }}</td>
+            <td>
+              <div class="action-buttons">
+                <button class="btn btn-edit" (click)="editEducation(i)">EDIT</button>
+                <button class="btn btn-delete" (click)="deleteEducation(i)">DELETE</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="form-actions">
+      <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
+    </div>
+  </div>
+  
+  <!-- Step 3: Employment History -->
+  <div *ngIf="currentStep === 3" class="step-content">
+    <h3>Employment History</h3>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="initials">Initials: <span class="required">*</span></label>
+        <select id="initials" name="initials" required>
+          <option value="">Select</option>
+          <option value="Prof.">Prof.</option>
+          <option value="Dr.">Dr.</option>
+          <option value="Mr.">Mr.</option>
+          <option value="Mrs.">Mrs.</option>
+          <option value="Ms.">Ms.</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="fullName">Full Name: <span class="required">*</span></label>
+        <input type="text" id="fullName" name="fullName" required>
+        <div class="error-message">Mobile Number is Required</div>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number: <span class="required">*</span></label>
+        <input type="text" id="mobileNumber" name="mobileNumber" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="refereeEmail">Referee Email Address: <span class="required">*</span></label>
+        <input type="email" id="refereeEmail" name="refereeEmail" required>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="occupation">Occupation: <span class="required">*</span></label>
+        <input type="text" id="occupation" name="occupation" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="category">Category: <span class="required">*</span></label>
+        <select id="category" name="category" required>
+          <option value="">Select</option>
+          <option value="Professional">Professional</option>
+          <option value="Academic">Academic</option>
+          <option value="Character">Character</option>
+        </select>
+      </div>
+    </div>
+    
+    <h3>Work Experience</h3>
+    
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Employer Name</th>
+            <th>Job Designation</th>
+            <th>Date From</th>
+            <th>Date To</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let job of workExperience; let i = index" [class.even]="i % 2 === 0">
+            <td>{{ job.employerName }}</td>
+            <td>{{ job.jobDesignation }}</td>
+            <td>{{ job.dateFrom }}</td>
+            <td>{{ job.dateTo }}</td>
+            <td>
+              <div class="action-buttons">
+                <button class="btn btn-edit">EDIT</button>
+                <button class="btn btn-delete">DELETE</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="form-actions">
+      <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
+    </div>
+  </div>
+  
+  <!-- Step 4: Referees -->
+  <div *ngIf="currentStep === 4" class="step-content">
+    <h3>Referees</h3>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="refInitials">Initials: <span class="required">*</span></label>
+        <select id="refInitials" name="refInitials" [(ngModel)]="refereeInfo.initials" required>
+          <option value="">Select</option>
+          <option value="Prof.">Prof.</option>
+          <option value="Dr.">Dr.</option>
+          <option value="Mr.">Mr.</option>
+          <option value="Mrs.">Mrs.</option>
+          <option value="Ms.">Ms.</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="refFullName">Full Name: <span class="required">*</span></label>
+        <input type="text" id="refFullName" name="refFullName" [(ngModel)]="refereeInfo.fullName" required>
+        <div class="error-message">Mobile Number is Required</div>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="refMobileNumber">Mobile Number: <span class="required">*</span></label>
+        <input type="text" id="refMobileNumber" name="refMobileNumber" [(ngModel)]="refereeInfo.mobileNumber" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="refEmail">Referee Email Address: <span class="required">*</span></label>
+        <input type="email" id="refEmail" name="refEmail" [(ngModel)]="refereeInfo.email" required>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="refOccupation">Occupation: <span class="required">*</span></label>
+        <input type="text" id="refOccupation" name="refOccupation" [(ngModel)]="refereeInfo.occupation" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="refCategory">Category: <span class="required">*</span></label>
+        <select id="refCategory" name="refCategory" [(ngModel)]="refereeInfo.category" required>
+          <option value="">Select</option>
+          <option value="Professional">Professional</option>
+          <option value="Academic">Academic</option>
+          <option value="Character">Character</option>
+        </select>
+      </div>
+    </div>
+    
+    <h3>Referees</h3>
+    
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Initials</th>
+            <th>Full Names</th>
+            <th>Mobile Number</th>
+            <th>Referee's Email Address</th>
+            <th>Occupation</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let referee of referees; let i = index" [class.even]="i % 2 === 0">
+            <td>{{ referee.initials }}</td>
+            <td>{{ referee.fullName }}</td>
+            <td>{{ referee.mobileNumber }}</td>
+            <td>{{ referee.email }}</td>
+            <td>{{ referee.occupation }}</td>
+            <td>
+              <div class="action-buttons">
+                <button class="btn btn-edit" (click)="editReferee(i)">EDIT</button>
+                <button class="btn btn-delete" (click)="deleteReferee(i)">DELETE</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="form-actions">
+      <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
+    </div>
+  </div>
+  
+  <!-- Step 5: Summary -->
+  <div *ngIf="currentStep === 5" class="step-content">
+    <h3>Profile Summary</h3>
+    
+    <div class="summary-section">
+      <div class="summary-card">
+        <h4>Personal Information</h4>
+        <div class="summary-grid">
+          <div class="summary-row">
+            <div class="summary-label">First Name</div>
+            <div class="summary-value">{{ personalInfo.firstName }}</div>
           </div>
-          <a class="logout-link" href="#">Log Out</a>
+          <div class="summary-row">
+            <div class="summary-label">Middle Name</div>
+            <div class="summary-value">{{ personalInfo.middleName }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Email Address</div>
+            <div class="summary-value">{{ personalInfo.lastName }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Date of Birth</div>
+            <div class="summary-value">{{ personalInfo.dateOfBirth }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Gender</div>
+            <div class="summary-value">{{ personalInfo.gender }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Nationality</div>
+            <div class="summary-value">{{ personalInfo.nationality }}</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="summary-card">
+        <h4>Contacts & Addresses</h4>
+        <div class="summary-grid">
+          <div class="summary-row">
+            <div class="summary-label">Phone Number</div>
+            <div class="summary-value">{{ personalInfo.mobileNo }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Alternative Phone Number</div>
+            <div class="summary-value">{{ personalInfo.alternativeMobileNo }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Postal Code</div>
+            <div class="summary-value">{{ personalInfo.postalCode }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Postal Address</div>
+            <div class="summary-value">{{ personalInfo.postalAddress }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Physical Location</div>
+            <div class="summary-value">{{ personalInfo.physicalLocation }}</div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-label">Street</div>
+            <div class="summary-value">Woodvalle</div>
+          </div>
         </div>
       </div>
     </div>
     
-    <!-- Progress Steps -->
-    <div class="progress-steps">
-      <div class="step" [class.active]="currentStep >= 1" [class.completed]="currentStep > 1">
-        <div class="step-number">01</div>
-        <div class="step-label">PERSONAL INFORMATION</div>
-      </div>
-      <div class="step" [class.active]="currentStep >= 2" [class.completed]="currentStep > 2">
-        <div class="step-number">02</div>
-        <div class="step-label">EDUCATION HISTORY</div>
-      </div>
-      <div class="step" [class.active]="currentStep >= 3" [class.completed]="currentStep > 3">
-        <div class="step-number">03</div>
-        <div class="step-label">EMPLOYMENT HISTORY</div>
-      </div>
-      <div class="step" [class.active]="currentStep >= 4" [class.completed]="currentStep > 4">
-        <div class="step-number">04</div>
-        <div class="step-label">REFEREES</div>
-      </div>
-      <div class="step" [class.active]="currentStep >= 5">
-        <div class="step-number">05</div>
-        <div class="step-label">SUMMARY</div>
-      </div>
+    <h3>Academic History</h3>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Institution Name</th>
+            <th>Qualifications</th>
+            <th>Course</th>
+            <th>Specialization</th>
+            <th>Awards</th>
+            <th>Award Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let education of academicHistory; let i = index" [class.even]="i % 2 === 0">
+            <td>{{ education.institutionName }}</td>
+            <td>{{ education.qualifications }}</td>
+            <td>{{ education.course }}</td>
+            <td>{{ education.specialization }}</td>
+            <td>{{ education.awards }}</td>
+            <td>{{ education.awardDate }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     
-    <!-- Form Content -->
-    <div class="form-content">
-      <!-- Step 1: Personal Information -->
-      <div *ngIf="currentStep === 1" class="step-content">
-        <h3>Personal Information</h3>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name: <span class="required">*</span></label>
-            <input type="text" id="firstName" name="firstName" [(ngModel)]="personalInfo.firstName" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="middleName">Middle Name:</label>
-            <input type="text" id="middleName" name="middleName" [(ngModel)]="personalInfo.middleName">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="lastName">Last Name: <span class="required">*</span></label>
-            <input type="text" id="lastName" name="lastName" [(ngModel)]="personalInfo.lastName" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email Address: <span class="required">*</span></label>
-            <input type="email" id="email" name="email" [(ngModel)]="personalInfo.email" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="gender">Gender: <span class="required">*</span></label>
-            <input type="text" id="gender" name="gender" [(ngModel)]="personalInfo.gender" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="dateOfBirth">Date Of Birth: <span class="required">*</span></label>
-            <input type="text" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="personalInfo.dateOfBirth" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="physicalLocation">Physical Location:</label>
-            <input type="text" id="physicalLocation" name="physicalLocation" [(ngModel)]="personalInfo.physicalLocation">
-          </div>
-          
-          <div class="form-group">
-            <label for="postalAddress">Postal Address:</label>
-            <input type="text" id="postalAddress" name="postalAddress" [(ngModel)]="personalInfo.postalAddress">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="postalCode">Postal Code:</label>
-            <input type="text" id="postalCode" name="postalCode" [(ngModel)]="personalInfo.postalCode">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nationality">Nationality: <span class="required">*</span></label>
-            <input type="text" id="nationality" name="nationality" [(ngModel)]="personalInfo.nationality" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="mobileNo">Mobile No: <span class="required">*</span></label>
-            <input type="text" id="mobileNo" name="mobileNo" [(ngModel)]="personalInfo.mobileNo" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="alternativeMobileNo">Alternative Mobile No:</label>
-            <input type="text" id="alternativeMobileNo" name="alternativeMobileNo" [(ngModel)]="personalInfo.alternativeMobileNo">
-          </div>
-        </div>
-        
-        <div class="form-actions">
-          <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
-        </div>
-      </div>
-      
-      <!-- Step 2: Education History -->
-      <div *ngIf="currentStep === 2" class="step-content">
-        <h3>Education History</h3>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="institutionName">Institution Name: <span class="required">*</span></label>
-            <input type="text" id="institutionName" name="institutionName" [(ngModel)]="educationInfo.institutionName" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="qualifications">Qualifications: <span class="required">*</span></label>
-            <select id="qualifications" name="qualifications" [(ngModel)]="educationInfo.qualifications" required>
-              <option value="">Select</option>
-              <option value="Degree">Degree</option>
-              <option value="Diploma">Diploma</option>
-              <option value="Certificate">Certificate</option>
-            </select>
-            <div class="error-message" *ngIf="!educationInfo.qualifications">Qualifications is Required</div>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="stateIfHighest">State if highest: <span class="required">*</span></label>
-            <select id="stateIfHighest" name="stateIfHighest" [(ngModel)]="educationInfo.stateIfHighest" required>
-              <option value="">Select</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-            <div class="error-message" *ngIf="!educationInfo.stateIfHighest">Qualification Level is required</div>
-          </div>
-          
-          <div class="form-group">
-            <label for="course">Course: <span class="required">*</span></label>
-            <input type="text" id="course" name="course" [(ngModel)]="educationInfo.course" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="areaOfSpecialization">Area of Specialization:</label>
-            <input type="text" id="areaOfSpecialization" name="areaOfSpecialization" [(ngModel)]="educationInfo.areaOfSpecialization">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="award">Award: <span class="required">*</span></label>
-            <input type="text" id="award" name="award" [(ngModel)]="educationInfo.award" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="awardDate">Award Date: <span class="required">*</span></label>
-            <input type="text" id="awardDate" name="awardDate" [(ngModel)]="educationInfo.awardDate" required>
-          </div>
-        </div>
-        
-        <h3>Academic History</h3>
-        
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Institution Name</th>
-                <th>Qualifications</th>
-                <th>Course</th>
-                <th>Specialization</th>
-                <th>Awards</th>
-                <th>Award Date</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let education of academicHistory; let i = index" [class.even]="i % 2 === 0">
-                <td>{{ education.institutionName }}</td>
-                <td>{{ education.qualifications }}</td>
-                <td>{{ education.course }}</td>
-                <td>{{ education.specialization }}</td>
-                <td>{{ education.awards }}</td>
-                <td>{{ education.awardDate }}</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn btn-edit" (click)="editEducation(i)">EDIT</button>
-                    <button class="btn btn-delete" (click)="deleteEducation(i)">DELETE</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <div class="form-actions">
-          <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
-        </div>
-      </div>
-      
-      <!-- Step 3: Employment History -->
-      <div *ngIf="currentStep === 3" class="step-content">
-        <h3>Employment History</h3>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="initials">Initials: <span class="required">*</span></label>
-            <select id="initials" name="initials" required>
-              <option value="">Select</option>
-              <option value="Prof.">Prof.</option>
-              <option value="Dr.">Dr.</option>
-              <option value="Mr.">Mr.</option>
-              <option value="Mrs.">Mrs.</option>
-              <option value="Ms.">Ms.</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="fullName">Full Name: <span class="required">*</span></label>
-            <input type="text" id="fullName" name="fullName" required>
-            <div class="error-message">Mobile Number is Required</div>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="mobileNumber">Mobile Number: <span class="required">*</span></label>
-            <input type="text" id="mobileNumber" name="mobileNumber" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="refereeEmail">Referee Email Address: <span class="required">*</span></label>
-            <input type="email" id="refereeEmail" name="refereeEmail" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="occupation">Occupation: <span class="required">*</span></label>
-            <input type="text" id="occupation" name="occupation" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="category">Category: <span class="required">*</span></label>
-            <select id="category" name="category" required>
-              <option value="">Select</option>
-              <option value="Professional">Professional</option>
-              <option value="Academic">Academic</option>
-              <option value="Character">Character</option>
-            </select>
-          </div>
-        </div>
-        
-        <h3>Work Experience</h3>
-        
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Employer Name</th>
-                <th>Job Designation</th>
-                <th>Date From</th>
-                <th>Date To</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let job of workExperience; let i = index" [class.even]="i % 2 === 0">
-                <td>{{ job.employerName }}</td>
-                <td>{{ job.jobDesignation }}</td>
-                <td>{{ job.dateFrom }}</td>
-                <td>{{ job.dateTo }}</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn btn-edit">EDIT</button>
-                    <button class="btn btn-delete">DELETE</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <div class="form-actions">
-          <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
-        </div>
-      </div>
-      
-      <!-- Step 4: Referees -->
-      <div *ngIf="currentStep === 4" class="step-content">
-        <h3>Referees</h3>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="refInitials">Initials: <span class="required">*</span></label>
-            <select id="refInitials" name="refInitials" [(ngModel)]="refereeInfo.initials" required>
-              <option value="">Select</option>
-              <option value="Prof.">Prof.</option>
-              <option value="Dr.">Dr.</option>
-              <option value="Mr.">Mr.</option>
-              <option value="Mrs.">Mrs.</option>
-              <option value="Ms.">Ms.</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="refFullName">Full Name: <span class="required">*</span></label>
-            <input type="text" id="refFullName" name="refFullName" [(ngModel)]="refereeInfo.fullName" required>
-            <div class="error-message">Mobile Number is Required</div>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="refMobileNumber">Mobile Number: <span class="required">*</span></label>
-            <input type="text" id="refMobileNumber" name="refMobileNumber" [(ngModel)]="refereeInfo.mobileNumber" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="refEmail">Referee Email Address: <span class="required">*</span></label>
-            <input type="email" id="refEmail" name="refEmail" [(ngModel)]="refereeInfo.email" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="refOccupation">Occupation: <span class="required">*</span></label>
-            <input type="text" id="refOccupation" name="refOccupation" [(ngModel)]="refereeInfo.occupation" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="refCategory">Category: <span class="required">*</span></label>
-            <select id="refCategory" name="refCategory" [(ngModel)]="refereeInfo.category" required>
-              <option value="">Select</option>
-              <option value="Professional">Professional</option>
-              <option value="Academic">Academic</option>
-              <option value="Character">Character</option>
-            </select>
-          </div>
-        </div>
-        
-        <h3>Referees</h3>
-        
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Initials</th>
-                <th>Full Names</th>
-                <th>Mobile Number</th>
-                <th>Referee's Email Address</th>
-                <th>Occupation</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let referee of referees; let i = index" [class.even]="i % 2 === 0">
-                <td>{{ referee.initials }}</td>
-                <td>{{ referee.fullName }}</td>
-                <td>{{ referee.mobileNumber }}</td>
-                <td>{{ referee.email }}</td>
-                <td>{{ referee.occupation }}</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn btn-edit" (click)="editReferee(i)">EDIT</button>
-                    <button class="btn btn-delete" (click)="deleteReferee(i)">DELETE</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <div class="form-actions">
-          <button class="btn btn-primary" (click)="saveDetails()">SAVE DETAILS</button>
-        </div>
-      </div>
-      
-      <!-- Step 5: Summary -->
-      <div *ngIf="currentStep === 5" class="step-content">
-        <h3>Profile Summary</h3>
-        
-        <div class="summary-section">
-          <div class="summary-card">
-            <h4>Personal Information</h4>
-            <div class="summary-grid">
-              <div class="summary-row">
-                <div class="summary-label">First Name</div>
-                <div class="summary-value">{{ personalInfo.firstName }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Middle Name</div>
-                <div class="summary-value">{{ personalInfo.middleName }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Email Address</div>
-                <div class="summary-value">{{ personalInfo.lastName }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Date of Birth</div>
-                <div class="summary-value">{{ personalInfo.dateOfBirth }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Gender</div>
-                <div class="summary-value">{{ personalInfo.gender }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Nationality</div>
-                <div class="summary-value">{{ personalInfo.nationality }}</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="summary-card">
-            <h4>Contacts & Addresses</h4>
-            <div class="summary-grid">
-              <div class="summary-row">
-                <div class="summary-label">Phone Number</div>
-                <div class="summary-value">{{ personalInfo.mobileNo }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Alternative Phone Number</div>
-                <div class="summary-value">{{ personalInfo.alternativeMobileNo }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Postal Code</div>
-                <div class="summary-value">{{ personalInfo.postalCode }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Postal Address</div>
-                <div class="summary-value">{{ personalInfo.postalAddress }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Physical Location</div>
-                <div class="summary-value">{{ personalInfo.physicalLocation }}</div>
-              </div>
-              <div class="summary-row">
-                <div class="summary-label">Street</div>
-                <div class="summary-value">Woodvalle</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <h3>Academic History</h3>
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Institution Name</th>
-                <th>Qualifications</th>
-                <th>Course</th>
-                <th>Specialization</th>
-                <th>Awards</th>
-                <th>Award Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let education of academicHistory; let i = index" [class.even]="i % 2 === 0">
-                <td>{{ education.institutionName }}</td>
-                <td>{{ education.qualifications }}</td>
-                <td>{{ education.course }}</td>
-                <td>{{ education.specialization }}</td>
-                <td>{{ education.awards }}</td>
-                <td>{{ education.awardDate }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <h3>Work Experience</h3>
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Employer Name</th>
-                <th>Job Designation</th>
-                <th>Date From</th>
-                <th>Date To</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let job of workExperience; let i = index" [class.even]="i % 2 === 0">
-                <td>{{ job.employerName }}</td>
-                <td>{{ job.jobDesignation }}</td>
-                <td>{{ job.dateFrom }}</td>
-                <td>{{ job.dateTo }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <h3>Referees</h3>
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Initials</th>
-                <th>Full Names</th>
-                <th>Mobile Number</th>
-                <th>Referee's Email Address</th>
-                <th>Occupation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let referee of referees; let i = index" [class.even]="i % 2 === 0">
-                <td>{{ referee.initials }}</td>
-                <td>{{ referee.fullName }}</td>
-                <td>{{ referee.mobileNumber }}</td>
-                <td>{{ referee.email }}</td>
-                <td>{{ referee.occupation }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <div class="form-actions">
-          <button class="btn btn-primary" (click)="submitDetails()">SUBMIT DETAILS</button>
-        </div>
-      </div>
-      
-      <!-- Navigation Buttons -->
-      <div class="form-navigation">
-        <div class="back-to-top" (click)="backToTop()">
-          <i class="icon-arrow-up">↑</i>
-          <span>Back to top</span>
-        </div>
-        
-        <div class="navigation-buttons">
-          <button *ngIf="currentStep > 1" class="btn btn-secondary" (click)="previousStep()">Previous</button>
-          <button *ngIf="currentStep < totalSteps" class="btn btn-primary" (click)="nextStep()">Next</button>
-        </div>
-      </div>
+    <h3>Work Experience</h3>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Employer Name</th>
+            <th>Job Designation</th>
+            <th>Date From</th>
+            <th>Date To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let job of workExperience; let i = index" [class.even]="i % 2 === 0">
+            <td>{{ job.employerName }}</td>
+            <td>{{ job.jobDesignation }}</td>
+            <td>{{ job.dateFrom }}</td>
+            <td>{{ job.dateTo }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footer-content">
-        <span>AAHI © 2025. | Powered by <a href="https://sysre.co.ke/" target="_blank">Systems Reengineered Ltd.</a></span>
-      </div>
+    <h3>Referees</h3>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Initials</th>
+            <th>Full Names</th>
+            <th>Mobile Number</th>
+            <th>Referee's Email Address</th>
+            <th>Occupation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let referee of referees; let i = index" [class.even]="i % 2 === 0">
+            <td>{{ referee.initials }}</td>
+            <td>{{ referee.fullName }}</td>
+            <td>{{ referee.mobileNumber }}</td>
+            <td>{{ referee.email }}</td>
+            <td>{{ referee.occupation }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="form-actions">
+      <button class="btn btn-primary" (click)="submitDetails()">SUBMIT DETAILS</button>
+    </div>
+  </div>
+  
+  <!-- Navigation Buttons -->
+  <div class="form-navigation">
+    <div class="back-to-top" (click)="backToTop()">
+      <i class="icon-arrow-up">↑</i>
+      <span>Back to top</span>
+    </div>
+    
+    <div class="navigation-buttons">
+      <button *ngIf="currentStep > 1" class="btn btn-secondary" (click)="previousStep()">Previous</button>
+      <button *ngIf="currentStep < totalSteps" class="btn btn-primary" (click)="nextStep()">Next</button>
     </div>
   </div>
 </div>

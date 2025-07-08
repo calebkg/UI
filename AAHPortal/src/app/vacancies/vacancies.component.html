@@ -1,143 +1,61 @@
-<div class="vacancies-container">
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="logo-container">
-      <img src="assets/aah-logo.png" alt="AAH Logo" class="logo">
+<!-- Vacancies Content -->
+<div class="vacancies-content">
+  <h3>Open Job Vacancies</h3>
+  
+  <div class="search-filter">
+    <div class="filter-dropdown">
+      <button class="filter-btn">
+        <i class="icon-filter">🔍</i>
+        Add filter
+      </button>
     </div>
     
-    <nav class="nav-menu">
-      <a routerLink="/profile" routerLinkActive="active" class="nav-item">
-        <i class="icon-profile">👤</i>
-        MY PROFILE
-      </a>
-      
-      <a routerLink="/vacancies" routerLinkActive="active" class="nav-item">
-        <i class="icon-vacancies">🔍</i>
-        VACCANCIES
-      </a>
-      
-      <a routerLink="/applications" routerLinkActive="active" class="nav-item">
-        <i class="icon-applications">📝</i>
-        MY APPLICATIONS
-      </a>
-    </nav>
-    
-    <div class="account-section">
-      <h4>ACCOUNT PAGE</h4>
-      
-      <a routerLink="/profile-summary" routerLinkActive="active" class="nav-item">
-        <i class="icon-summary">📄</i>
-        PROFILE SUMMARY
-      </a>
-      
-      <a routerLink="/edit-profile" routerLinkActive="active" class="nav-item">
-        <i class="icon-edit">✏️</i>
-        EDIT PROFILE
-      </a>
-    </div>
-    
-    <div class="help-section">
-      <div class="help-card">
-        <div class="help-icon">?</div>
-        <h4>Need help?</h4>
-        <p>Please check our docs</p>
-        <button class="btn btn-light">DOCUMENTATION</button>
-      </div>
-    </div>
-    
-    <div class="user-section">
-      <div class="user-info">
-        <img src="assets/user.png" alt="User" class="user-avatar">
-        <div class="user-details">
-          <div class="user-name">Brianna Kirui</div>
-          <div class="user-email">technical&#64;sysre.co.ke</div>
-        </div>
-      </div>
-      <a class="logout-link" href="#">Log Out</a>
+    <div class="search-box">
+      <i class="icon-search">🔍</i>
+      <input type="text" placeholder="Search here" [(ngModel)]="searchTerm">
     </div>
   </div>
   
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Header -->
-    <div class="header-bg">
-      <div class="header-content">
-        <div class="header-titles">
-          <h1>VACANCIES</h1>
-          <h2>APPLY OPEN VACANCIES</h2>
-        </div>
-        
-        <div class="header-user">
-          <img src="assets/user.png" alt="User" class="user-avatar">
-          <div class="user-info">
-            <div class="user-name">Brianna Kirui</div>
-            <div class="user-email">technical&#64;sysre.co.ke</div>
-          </div>
-          <a class="logout-link" href="#">Log Out</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Vacancies Content -->
-    <div class="vacancies-content">
-      <h3>Open Job Vacancies</h3>
-      
-      <div class="search-filter">
-        <div class="filter-dropdown">
-          <button class="filter-btn">
-            <i class="icon-filter">🔍</i>
-            Add filter
-          </button>
-        </div>
-        
-        <div class="search-box">
-          <i class="icon-search">🔍</i>
-          <input type="text" placeholder="Search here" [(ngModel)]="searchTerm">
-        </div>
-      </div>
-      
-      <div class="table-container">
-        <table class="vacancies-table">
-          <thead>
-            <tr>
-              <th>Job Requisition No.</th>
-              <th>Job No.</th>
-              <th>Job Description</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let vacancy of filteredVacancies; let i = index" [class.even]="i % 2 === 0">
-              <td>{{ vacancy.requisitionNo }}</td>
-              <td>{{ vacancy.jobNo }}</td>
-              <td>{{ vacancy.description }}</td>
-              <td>
-                <div class="action-buttons">
-                  <button class="btn btn-view" (click)="viewVacancy(vacancy)">
-                    <i class="icon-view">👁️</i>
-                    VIEW
-                  </button>
-                  <button class="btn btn-download" (click)="downloadVacancy(vacancy)">
-                    <i class="icon-download">⬇️</i>
-                    DOWNLOAD
-                  </button>
-                  <button class="btn btn-apply" (click)="applyForVacancy(vacancy)">
-                    <i class="icon-apply">✅</i>
-                    APPLY
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footer-content">
-        <span>AAHI © 2025. | Powered by <a href="https://sysre.co.ke/" target="_blank">Systems Reengineered Ltd.</a></span>
-      </div>
-    </div>
+  <div class="table-container">
+    <table class="vacancies-table">
+      <thead>
+        <tr>
+          <th>Job Requisition No.</th>
+          <th>Job No.</th>
+          <th>Job Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vacancy of filteredVacancies; let i = index" [class.even]="i % 2 === 0">
+          <td>{{ vacancy.requisitionNo }}</td>
+          <td>{{ vacancy.jobNo }}</td>
+          <td>{{ vacancy.description }}</td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn btn-view" (click)="viewVacancy(vacancy)">
+                <i class="icon-view">👁️</i>
+                VIEW
+              </button>
+              <button class="btn btn-download" (click)="downloadVacancy(vacancy)">
+                <i class="icon-download">⬇️</i>
+                DOWNLOAD
+              </button>
+              <button class="btn btn-apply" (click)="applyForVacancy(vacancy)">
+                <i class="icon-apply">✅</i>
+                APPLY
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-content">
+    <span>AAHI © 2025. | Powered by <a href="https://sysre.co.ke/" target="_blank">Systems Reengineered Ltd.</a></span>
   </div>
 </div>

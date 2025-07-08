@@ -1,5 +1,9 @@
 <div class="header" [ngClass]="headerClass">
   <div class="header-content">
+    <!-- Logo on the left -->
+    <div class="header-logo">
+      <img src="/assets/AAH.png" alt="AAH Logo" style="height: 48px;" />
+    </div>
     <!-- Mobile hamburger button -->
     <button class="hamburger-btn mobile-only" (click)="toggleSidebar()">
       <span class="hamburger-line"></span>
@@ -25,7 +29,7 @@
     <!-- Desktop user section -->
     <div class="user-section desktop-only">
       <div class="user-info">
-        <img src="assets/user.png" alt="User" class="user-avatar">
+        <img src="/assets/user.png" alt="User" class="user-avatar">
         <div class="user-details">
           <div class="user-name">Brianna Kirui</div>
           <div class="user-email">technical&#64;sysre.co.ke</div>
